@@ -1,3 +1,14 @@
+let container = document.getElementById('container')
+
+toggle = () => {
+  container.classList.toggle('sign-in')
+  container.classList.toggle('sign-up')
+}
+
+setTimeout(() => {
+  container.classList.add('sign-in')
+}, 200)
+
 document.addEventListener('DOMContentLoaded', () => {
   // CSRF 토큰 가져오기
   const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
@@ -88,4 +99,39 @@ document.addEventListener('DOMContentLoaded', () => {
               alert('로그인 중 문제가 발생했습니다.');
           });
   });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Sign Up 폼 입력 필드 및 버튼
+    const signupFields = document.querySelectorAll(".sign-up input");
+    const signupButton = document.getElementById("signup-button");
+
+    // Sign In 폼 입력 필드 및 버튼
+    const signinFields = document.querySelectorAll(".sign-in input");
+    const signinButton = document.getElementById("signin-button");
+
+    // 함수: 입력 필드가 모두 채워졌는지 확인
+    function checkFields(fields, button) {
+        const allFilled = Array.from(fields).every(field => field.value.trim() !== "");
+        if (allFilled) {
+            button.style.backgroundColor = "rgb(224, 103, 159)"; // 원하는 색상으로 변경
+        } else {
+            button.style.backgroundColor = "rgb(245, 213, 228)"; // 기본 색상
+        }
+    }
+
+    // 이벤트 리스너 추가 (Sign Up)
+    signupFields.forEach(field => {
+        field.addEventListener("input", () => {
+            checkFields(signupFields, signupButton);
+        });
+    });
+
+    // 이벤트 리스너 추가 (Sign In)
+    signinFields.forEach(field => {
+        field.addEventListener("input", () => {
+            checkFields(signinFields, signinButton);
+        });
+    });
 });
