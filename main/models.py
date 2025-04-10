@@ -83,3 +83,12 @@ class 야경명소(models.Model):
     class Meta:
         managed = False
         db_table = 'night_table'
+
+class User(models.Model):
+    username = models.CharField(max_length=150, unique=True)  # 아이디 필드
+    password = models.CharField(max_length=128)  # 비밀번호 필드 (해싱되지 않음)
+    name = models.CharField(max_length=50)  # 이름
+    email = models.EmailField(unique=True)  # 이메일
+
+    def __str__(self):
+        return self.username

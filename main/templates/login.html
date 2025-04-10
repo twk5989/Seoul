@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <!-- static 사용해서 CSS 파일 로드 -->
+    <title>Login and Sign Up</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
@@ -12,110 +11,88 @@
     <div id="container" class="container">
         <!-- FORM SECTION -->
         <div class="row">
-          <!-- SIGN UP -->
+          <!-- 회원가입 폼 -->
           <div class="col align-items-center flex-col sign-up">
             <div class="form-wrapper align-items-center">
-              <div class="form sign-up">
+              <form class="form sign-up" method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
                 <div class="input-group">
                   <i class='bx bxs-user'></i>
-                  <input type="text" placeholder="Username">
+                  <input type="text" name="username" placeholder="Username" required>
+                  {% for error in form.username.errors %}
+                    <p class="error">{{ error }}</p>
+                  {% endfor %}
                 </div>
                 <div class="input-group">
                   <i class='bx bx-mail-send'></i>
-                  <input type="email" placeholder="Email">
+                  <input type="email" name="email" placeholder="Email">
+                  {% for error in form.email.errors %}
+                    <p class="error">{{ error }}</p>
+                  {% endfor %}
                 </div>
                 <div class="input-group">
                   <i class='bx bxs-lock-alt'></i>
-                  <input type="password" placeholder="Password">
+                  <input type="password" name="password1" placeholder="Password" required>
+                  {% for error in form.password1.errors %}
+                    <p class="error">{{ error }}</p>
+                  {% endfor %}
                 </div>
                 <div class="input-group">
                   <i class='bx bxs-lock-alt'></i>
-                  <input type="password" placeholder="Confirm password">
+                  <input type="password" name="password2" placeholder="Confirm Password" required>
+                  {% for error in form.password2.errors %}
+                    <p class="error">{{ error }}</p>
+                  {% endfor %}
                 </div>
-                <button>
-                  Sign up
-                </button>
+                <button type="submit">Sign Up</button>
                 <p>
-                  <span>
-                    Already have an account?
-                  </span>
-                  <b onclick="toggle()" class="pointer">
-                    Sign in here
-                  </b>
+                  <span>Already have an account?</span>
+                  <b onclick="toggle()" class="pointer">Sign in here</b>
                 </p>
-              </div>
+              </form>
             </div>
-          
           </div>
-          <!-- END SIGN UP -->
-          <!-- SIGN IN -->
+          <!-- 로그인 폼 -->
           <div class="col align-items-center flex-col sign-in">
             <div class="form-wrapper align-items-center">
-              <div class="form sign-in">
+              <form class="form sign-in" method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
                 <div class="input-group">
                   <i class='bx bxs-user'></i>
-                  <input type="text" placeholder="Username">
+                  <input type="text" name="username" id="username" placeholder="Username" required>
                 </div>
                 <div class="input-group">
                   <i class='bx bxs-lock-alt'></i>
-                  <input type="password" placeholder="Password">
+                  <input type="password" name="password" id="password" placeholder="Password" required>
                 </div>
-                <button>
-                  Sign in
-                </button>
+                <button type="submit">Sign In</button>
                 <p>
-                  <b>
-                    Forgot password?
-                  </b>
+                  <b><a href="{% url 'home' %}">Back to Home</a></b>
                 </p>
                 <p>
-                  <span>
-                    Don't have an account?
-                  </span>
-                  <b onclick="toggle()" class="pointer">
-                    Sign up here
-                  </b>
+                  <span>Don't have an account?</span>
+                  <b onclick="toggle()" class="pointer">Sign up here</b>
                 </p>
-              </div>
-            </div>
-            <div class="form-wrapper">
-        
+              </form>
             </div>
           </div>
-          <!-- END SIGN IN -->
         </div>
-        <!-- END FORM SECTION -->
         <!-- CONTENT SECTION -->
         <div class="row content-row">
-          <!-- SIGN IN CONTENT -->
+          <!-- 로그인 관련 텍스트 -->
           <div class="col align-items-center flex-col">
             <div class="text sign-in">
-              <h2>
-                Welcome
-              </h2>
-      
-            </div>
-            <div class="img sign-in">
-        
+              <h2>Welcome</h2>
             </div>
           </div>
-          <!-- END SIGN IN CONTENT -->
-          <!-- SIGN UP CONTENT -->
+          <!-- 회원가입 관련 텍스트 -->
           <div class="col align-items-center flex-col">
-            <div class="img sign-up">
-            
-            </div>
             <div class="text sign-up">
-              <h2>
-                Join with us
-              </h2>
-      
+              <h2>Join with us</h2>
             </div>
           </div>
-          <!-- END SIGN UP CONTENT -->
         </div>
-        <!-- END CONTENT SECTION -->
-      </div>
-    
+    </div>
+    <script src="{% static 'js/login.js' %}"></script>
 </body>
 </html>
