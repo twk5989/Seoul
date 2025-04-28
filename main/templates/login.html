@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 및 회원가입</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div id="container" class="container">
+        <!-- FORM SECTION -->
+        <div class="row">
+            <!-- 회원가입 폼 -->
+            <div class="col align-items-center flex-col sign-up">
+                <div class="form-wrapper align-items-center">
+                    <form class="form sign-up" method="POST" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <p class="info">
+                            * 비밀번호는 8자 이상이어야 합니다.
+                        </p>
+                        <div class="input-group">
+                            <i class='bx bxs-user'></i>
+                            <input type="text" name="username" placeholder="Username" required>
+                            {% for error in form.username.errors %}
+                                <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="input-group">
+                            <i class='bx bx-mail-send'></i>
+                            <input type="email" name="email" placeholder="Email">
+                            {% for error in form.email.errors %}
+                                <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="input-group">
+                            <i class='bx bxs-lock-alt'></i>
+                            <input type="password" name="password1" placeholder="비밀번호" required>
+                            {% for error in form.password1.errors %}
+                                <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="input-group">
+                            <i class='bx bxs-lock-alt'></i>
+                            <input type="password" name="password2" placeholder="비밀번호 확인" required>
+                            {% for error in form.password2.errors %}
+                                <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <button type="submit" id="signup-button">Sign Up</button>
+                        <p>
+                            <span>Already have an account?</span>
+                            <b onclick="toggle()" class="pointer">Sign in here</b>
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <!-- 로그인 폼 -->
+            <div class="col align-items-center flex-col sign-in">
+                <div class="form-wrapper align-items-center">
+                    <form class="form sign-in" method="POST" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <i class='bx bxs-user'></i>
+                            <input type="text" name="username" id="username" placeholder="Username" required>
+                        </div>
+                        <div class="input-group">
+                            <i class='bx bxs-lock-alt'></i>
+                            <input type="password" name="password" id="password" placeholder="Password" required>
+                        </div>
+                        <button type="submit" id="signin-button" >Sign In</button>
+                        <p>
+                            <b><a href="{% url 'home' %}">Back to Home</a></b>
+                        </p>
+                        <p>
+                            <span>Don't have an account?</span>
+                            <b onclick="toggle()" class="pointer">Sign up here</b>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- CONTENT SECTION -->
+        <div class="row content-row">
+            <!-- 로그인 관련 텍스트 -->
+            <div class="col align-items-center flex-col">
+                <div class="text sign-in">
+                    <h2>Welcome</h2>
+                </div>
+            </div>
+            <!-- 회원가입 관련 텍스트 -->
+            <div class="col align-items-center flex-col">
+                <div class="text sign-up">
+                    <h2>Join with us</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>

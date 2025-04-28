@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/flower_place.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    {% include 'menu.html' %}
+    <header>
+        <h1>{{ title }}</h1>
+        <p class="sub-text">{{ location }}</p>
+        <h2 class="center">{{ title }} 명소</h2>
+    </header>
+
+    <main>
+        
+        
+        <div class="divider"></div>
+
+        <div class="image-gallery">
+            {% for img in images %}
+                <img src="{% static img %}" alt="이미지" />
+            {% endfor %}
+        </div>
+
+        <section class="detail-info">
+            <h3 class="detail-info-title">상세정보</h3>
+            <div class="divider1"></div>
+            <p>{{ description }}</p>
+
+            <ul class="info-list">
+                {% for key, value in info.items %}
+                    <li>
+                        <strong>{{ key }}:</strong> 
+                        {% if key == "홈페이지" %}
+                            <a href="{{ value }}" target="_blank" rel="noopener noreferrer">{{ value }}</a>
+                        {% else %}
+                            {{ value }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <iframe src="{{ map_url }}" width="600" height="450" style="border:0; display:block; margin:0 auto;" allowfullscreen="" loading="lazy"></iframe>
+
+           
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 서울 여행 가이드. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

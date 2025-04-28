@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관광 명소</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white font-sans">
+  {% include 'menu.html' %}
+  
+  <div class="p-5">
+    <div class="max-w-7xl mx-auto space-y-10">
+      
+      <!-- 총 몇 건 표시 -->
+      <div class="text-lg mb-5">총 <span>4</span>건</div>
+
+      <!-- 관광 카드 리스트 -->
+      <div class="space-y-8">
+        
+        <!-- 카드 1 -->
+        <div class="flex gap-4 items-start border-b pb-4">
+          <img src="{% static 'img/namsan_tower/Namsan_Tower.jpg' %}" alt="남산타워" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
+          <div class="flex-1">
+            <a href="{% url 'place_detail' place_name='Namsan_Tower' %}" class="text-xl font-bold text-black hover:underline">
+              남산타워
+            </a>
+            <p class="text-sm text-gray-500 mt-2">서울 용산구</p>
+            <p class="text-xs text-gray-700 my-1">#당일코스 #추천코스</p>
+            <div class="flex flex-wrap mt-2">
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">벚꽃</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">양화한강공원</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">밤섬</span>
+            </div>
+          </div>
+          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 8.03km</div>
+        </div>
+
+        <!-- 카드 2 -->
+        <div class="flex gap-4 items-start border-b pb-4">
+          <img src="{% static 'img/ddp/DDP.jpg' %}" alt="동대문디자인플라자(DDP)" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
+          <div class="flex-1">
+            <a href="{% url 'place_detail' place_name='Dongdaemun Design Plaza' %}" class="text-xl font-bold text-black hover:underline">
+              동대문디자인플라자(DDP)
+            </a>
+            <p class="text-sm text-gray-500 mt-2">서울 중구 을지로</p>
+            <p class="text-xs text-gray-700 my-1">#핫플레이스 #건축미학 #야경명소</p>
+            <div class="flex flex-wrap mt-2">
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">DDP야경</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">디자인전시</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">건축투어</span>
+            </div>
+          </div>
+          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 0.5km</div>
+        </div>
+
+        <!-- 카드 3 -->
+        <div class="flex gap-4 items-start border-b pb-4">
+          <img src="{% static 'img/myeongdong/myeongdong.jpg' %}" alt="명동" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
+          <div class="flex-1">
+            <a href="{% url 'place_detail' place_name='myeongdong' %}" class="text-xl font-bold text-black hover:underline">
+              명동
+            </a>
+            <p class="text-sm text-gray-500 mt-2">서울 중구 명동길</p>
+            <p class="text-xs text-gray-700 my-1">#쇼핑거리 #맛집탐방 #관광명소</p>
+            <div class="flex flex-wrap mt-2">
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">명동성당</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">명동거리</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">명동맛집</span>
+            </div>
+          </div>
+          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 1.2km</div>
+        </div>
+
+        <!-- 카드 4 -->
+        <div class="flex gap-4 items-start border-b pb-4">
+          <img src="{% static 'img/lotteworld/lotteworld.jpg' %}" alt="롯데월드" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
+          <div class="flex-1">
+            <a href="{% url 'place_detail' place_name='lotteworld' %}" class="text-xl font-bold text-black hover:underline">
+              롯데월드
+            </a>
+            <p class="text-sm text-gray-500 mt-2">서울 송파구 올림픽로 240</p>
+            <p class="text-xs text-gray-700 my-1">#놀이공원 #데이트코스 #가족여행</p>
+            <div class="flex flex-wrap mt-2">
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">롯데월드어드벤처</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">매직아일랜드</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">롯데월드몰</span>
+            </div>
+          </div>
+          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 6.7km</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

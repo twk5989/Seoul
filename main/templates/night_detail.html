@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>야경명소상세페이지</title>
+    <link rel="stylesheet" href="{% static 'css/night_detail.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    {% include 'menu.html' %}
+    <header>    
+        <h1>{{ night.장소명 }}</h1>
+        <br>
+
+        <p>{{ night.분류 }}</p>
+    </header>
+
+    <main>
+        <div class="divider"></div>
+        <h3 class="subtitle">사진보기</h3>
+        <div class="image-gallery">
+            <img src="{% static 'img/river1.jpg' %}" alt="한강 이미지 1" />
+        </div>
+        <div class="divider"></div>
+
+            
+            <h3>상세정보</h3>
+            <p>{{ night.내용 }}</p>
+
+            <ul class="info-list">
+                <li><strong>이용요금:</strong>{{ night.이용요금 }}</li>
+                <li><strong>운영시간:</strong>{{ night.운영시간 }}</li>
+                <li><strong>홈페이지:</strong>{{ night.홈페이지URL }}</li>
+                <li><strong>전화번호:</strong>{{ night.전화번호 }}</li>
+            </ul>
+        
+            <iframe
+                width="600"
+                height="450"
+                style="border:0; display: block; margin: 0 auto;"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q={{ 위도 }},{{ 경도 }}&hl=ko&z=16&output=embed">
+            </iframe>
+           
+            <h3>주요 정보</h3>
+            <ul class="info-list">
+                <li><strong>위치:</strong> {{night.주소}}</li>
+                <li><strong>지하철:</strong> {{night.지하철}} </li>
+                <li><strong>버스:</strong> {{night.버스}} </li>
+                <li><strong>주차 안내:</strong> {{night.주차안내}}</li>
+            </ul>
+            <br>
+            <br>
+            <br>
+
+            <h3 style="text-align: center; margin-top: 40px;">'{{ night.장소명 }}' 과 유사한 여행지 추천</h3>
+            <br>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;">
+            {% for place in 추천장소들 %}
+                <a href="/night/{{ place.id }}/" style="text-decoration: none; color: inherit;">
+                    <div style="width: 180px; border: 1px solid #ddd; border-radius: 10px; padding: 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        {{ place.장소명 }}
+                    </div>  
+                </a>
+            {% endfor %}
+            </div>
+            <br>
+            <br>    
+
+
+    <!-- 푸터 -->
+    <footer>
+        <p>© 2025 서울 여행 가이드. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
