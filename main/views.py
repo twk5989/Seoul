@@ -1,53 +1,146 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages
-def login_view(request):
-    return render(request, 'login.html')
+let container = document.getElementById('container')
 
-def home(request):
-    return render(request, 'home.html')  # home.html 템플릿을 렌더링
+toggle = () => {
+  container.classList.toggle('sign-in')
+  container.classList.toggle('sign-up')
+}
 
-def menu_view(request):
-    return render(request, 'menu.html')
+setTimeout(() => {
+  container.classList.add('sign-in')
+}, 200)
 
-def place_view(request):
-    return render(request, 'place.html')
+function checkFields(fields, button) {
+    const allFilled = Array.from(fields).every(field => field.value.trim() !== "");
+    if (allFilled) {
+        button.style.backgroundColor = "rgb(224, 103, 159)"; // 원하는 색상으로 변경
+    } else {
+        button.style.backgroundColor = "rgb(245, 213, 228)"; // 기본 색상
+    }
+}
 
-def night_place_view(request):
-    return render(request, 'night_place.html')
+document.addEventListener('DOMContentLoaded', () => {
+  // CSRF 토큰 가져오기
+  const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
-def flower_place_view(request):
-    return render(request, 'flower_place.html')
+  // 회원가입 버튼 이벤트
+  const signupButton = document.querySelector('.sign-up button');
+  signupButton.addEventListener('click', () => {
+      const username = document.querySelector('.sign-up input[placeholder="Username"]').value;
+      const email = document.querySelector('.sign-up input[placeholder="Email"]').value;
+      const password = document.querySelector('.sign-up input[placeholder="Password"]').value;
+      const confirmPassword = document.querySelector('.sign-up input[placeholder="Confirm password"]').value;
 
-def trip_course_view(request):
-    return render(request, 'trip_course.html')
+      // 필수값 체크
+      if (!username || !email || !password || !confirmPassword) {
+          alert('모든 필드를 채워주세요.');
+          return;
+      }
+      if (password !== confirmPassword) {
+          alert('비밀번호가 일치하지 않습니다.');
+          return;
+      }
+
+      // AJAX 요청
+      fetch('/login/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrfToken,
+          },
+          body: JSON.stringify({
+              username: username,
+              email: email,
+              password: password,
+              confirm_password: confirmPassword,
+              signup: true
+          }),
+      })
+          .then(response => response.json())
+          .then(data => {
+              if (data.message) {
+                  alert(data.message);
+              } else {
+                  alert('회원가입이 성공적으로 완료되었습니다!');
+                  window.location.reload();
+              }
+          })
+          .catch(error => {
+              console.error('Error:', error);
+              alert('회원가입 중 문제가 발생했습니다.');
+          });
+  });
+
+  // 로그인 버튼 이벤트
+  const loginButton = document.querySelector('.sign-in button');
+  loginButton.addEventListener('click', () => {
+      const username = document.querySelector('.sign-in input[name="username"]').value;
+      const password = document.querySelector('.sign-in input[name="password"]').value;
+
+      if (!username || !password) {
+          alert('아이디와 비밀번호를 입력해주세요.');
+          return;
+      }
+
+      // AJAX 요청
+      fetch('/login/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrfToken,
+          },
+          body: JSON.stringify({
+              username: username,
+              password: password,
+              login: true
+          }),
+      })
+          .then(response => response.json())
+          .then(data => {
+              if (data.message) {
+                  alert(data.message);
+              } else {
+                  alert('로그인 성공!');
+                  window.location.href = '/home'; // 로그인 성공 시 리다이렉트
+              }
+          })
+          .catch(error => {
+              console.error('Error:', error);
+              alert('로그인 중 문제가 발생했습니다.');
+          });
+  });
+});
 
 
-def login_view(request):
-    if request.method == "POST":
-        # 로그인 처리
-        if 'username' in request.POST and 'password' in request.POST:
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                messages.success(request, "Successfully logged in!")
-                return redirect('home')
-            else:
-                messages.error(request, "Invalid username or password.")
+document.addEventListener("DOMContentLoaded", () => {
+    // Sign Up 폼 입력 필드 및 버튼
+    const signupFields = document.querySelectorAll(".sign-up input");
+    const signupButton = document.getElementById("signup-button");
 
-        # 회원가입 처리
-        elif 'password1' in request.POST and 'password2' in request.POST:
-            form = UserCreationForm(request.POST)
-            if form.is_valid():
-                new_user = form.save()
-                messages.success(request, f"Account created for {new_user.username}! Please log in.")
-                return redirect('home')
-            else:
-                messages.error(request, f"Signup failed: {form.errors}")
-    else:
-        form = UserCreationForm()
+    // Sign In 폼 입력 필드 및 버튼
+    const signinFields = document.querySelectorAll(".sign-in input");
+    const signinButton = document.getElementById("signin-button");
 
-    return render(request, 'login.html', {'form': form})
+    // 함수: 입력 필드가 모두 채워졌는지 확인
+    function checkFields(fields, button) {
+        const allFilled = Array.from(fields).every(field => field.value.trim() !== "");
+        if (allFilled) {
+            button.style.backgroundColor = "rgb(224, 103, 159)"; // 원하는 색상으로 변경
+        } else {
+            button.style.backgroundColor = "rgb(245, 213, 228)"; // 기본 색상
+        }
+    }
+
+    // 이벤트 리스너 추가 (Sign Up)
+    signupFields.forEach(field => {
+        field.addEventListener("input", () => {
+            checkFields(signupFields, signupButton);
+        });
+    });
+
+    // 이벤트 리스너 추가 (Sign In)
+    signinFields.forEach(field => {
+        field.addEventListener("input", () => {
+            checkFields(signinFields, signinButton);
+        });
+    });
+});
