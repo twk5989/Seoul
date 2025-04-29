@@ -9,6 +9,15 @@ setTimeout(() => {
   container.classList.add('sign-in')
 }, 200)
 
+function checkFields(fields, button) {
+    const allFilled = Array.from(fields).every(field => field.value.trim() !== "");
+    if (allFilled) {
+        button.style.backgroundColor = "rgb(224, 103, 159)"; // 원하는 색상으로 변경
+    } else {
+        button.style.backgroundColor = "rgb(245, 213, 228)"; // 기본 색상
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // CSRF 토큰 가져오기
   const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
