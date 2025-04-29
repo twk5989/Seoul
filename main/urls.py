@@ -16,7 +16,7 @@ urlpatterns = [
 
     path('trip_course/', views.trip_course_view, name='trip_course'),
 
-    path('login/', views.login_view, name='login'),
+    path('sucess/', views.success_view, name='sucess'),
+
     
-    path('', views.home, name='home'),
 ]
