@@ -120,16 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const signinFields = document.querySelectorAll(".sign-in input");
     const signinButton = document.getElementById("signin-button");
 
-    // 함수: 입력 필드가 모두 채워졌는지 확인
-    function checkFields(fields, button) {
-        const allFilled = Array.from(fields).every(field => field.value.trim() !== "");
-        if (allFilled) {
-            button.style.backgroundColor = "rgb(224, 103, 159)"; // 원하는 색상으로 변경
-        } else {
-            button.style.backgroundColor = "rgb(245, 213, 228)"; // 기본 색상
-        }
-    }
-
     // 이벤트 리스너 추가 (Sign Up)
     signupFields.forEach(field => {
         field.addEventListener("input", () => {
