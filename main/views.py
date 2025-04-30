@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-from django.http import JsonResponse
+from django.contrib.auth import logout
+from .forms import CustomUserCreationForm
 def login_view(request):
     return render(request, 'login.html')
 
@@ -25,33 +26,46 @@ def trip_course_view(request):
     return render(request, 'trip_course.html')
 
 def success_view(request):
-    return render(request, 'sucess.html')
+    return render(request, 'success.html')
 
 
 def login_view(request):
+    # 사용자 정의 폼 
+    signup_form = CustomUserCreationForm()
+    login_form = AuthenticationForm()
+
     if request.method == "POST":
-        # 로그인 처리
+        # 로그인 
         if 'username' in request.POST and 'password' in request.POST:
             username = request.POST.get('username')
             password = request.POST.get('password')
             user = authenticate(request, username=username, password=password)
-            if user is not None:
+            if user:
                 login(request, user)
                 messages.success(request, "Successfully logged in!")
                 return redirect('home')
             else:
                 messages.error(request, "Invalid username or password.")
-
-        # 회원가입 처리
-        elif 'password1' in request.POST and 'password2' in request.POST:
-            form = UserCreationForm(request.POST)
-            if form.is_valid():
-                new_user = form.save()
-                messages.success(request, f"Account created for {new_user.username}! Please log in.")
-                return redirect('sucess')
+        
+        # 회원가입 
+        elif 'email' in request.POST and 'password1' in request.POST:
+            signup_form = CustomUserCreationForm(request.POST)
+            if signup_form.is_valid():
+                signup_form.save()
+                messages.success(request, "회원가입이 완료되었습니다.")
+                return redirect('home')
             else:
-                messages.error(request, f"Signup failed: {form.errors}")
-    else:
-        form = UserCreationForm()
+                # 에러 메세지
+                for field, errors in signup_form.errors.items():
+                    for error in errors:
+                        messages.error(request, f"{field}: {error}")
+    
+    return render(request, 'login.html', {
+        'signup_form': signup_form,
+        'login_form': login_form,
+    })
 
-    return render(request, 'login.html', {'form': form})
+def logout_view(request):
+    logout(request) 
+    messages.success(request, "Successfully logged out!")  
+    return redirect('home')  
