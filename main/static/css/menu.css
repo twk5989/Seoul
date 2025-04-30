@@ -1,60 +1,81 @@
-/* From Uiverse.io by akshat-patel28 */ 
+/* 기존 .button-container 스타일 유지 */
 .button-container {
-    display: flex;
-    background-color: rgba(245, 73, 144);
-    width: 150px;
-    height: 40px;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 10px;
-  }
-  
-  .button {
-    outline: 0 !important;
-    border: 0 !important;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    transition: all ease-in-out 0.3s;
-    cursor: pointer;
-  }
-  
-  .button:hover {
-    transform: translateY(-3px);
-  }
-  
-  .icon {
-    font-size: 20px;
-  }
+  display: flex;
+  background-color: rgba(245, 73, 144);
+  width: auto;
+  height: 40px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 0 10px;
+}
 
-  .nav-item {
-    margin: 0;
-    padding: 0;
+.button {
+  outline: 0 !important;
+  border: 0 !important;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.nav-item {
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
-    display: block;
-    text-align: center;
-    padding: 5px 10px; /* 클릭할 수 있는 영역 확보 */
+  display: block;
+  text-align: center;
+  padding: 5px 10px;
 }
-
 
 .navbar-nav {
-    display: flex;
-    justify-content: center; /* 메뉴를 가운데 정렬 */
-    gap: 5px; /* 간격을 줄여서 메뉴를 붙임 */
-    padding-left: 0; /* Bootstrap 기본 패딩 제거 */
-    max-width: 1200px; /* 너무 넓지 않도록 제한 */
-    margin-left: 450px; /* 10px ~ 40px 범위에서 조절 */
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-left: 0;
 }
 
-.navbar navbar-expand-lg bg-body-tertiary{
-    background-color: rgba(245, 73, 144);
+.navbar {
+  background-color: rgba(245, 73, 144);
 }
 
+.user-name {
+  display: inline-block;
+  white-space: nowrap; /* 이름이 한 줄로 표시되도록 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px; /* 유저 이름의 최대 너비 */
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #fff;
+  padding-right: 5px; /* '님'과의 간격 */
+}
 
+.user-suffix {
+  font-size: 0.9em;  /* '님'의 폰트 크기를 유저 이름보다 작게 설정 */
+  color: #fff;
+  font-weight: normal;  /* '님'의 글씨를 좀 더 얇게 설정 */
+}
+
+.navbar-brand {
+  color: #fff;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-right: auto;
+}
