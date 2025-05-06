@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import 관광거리
@@ -9,6 +9,8 @@ from .serializers import 관광거리Serializer
 from .models import 야경명소
 from .serializers import 야경명소Serializer
 from .data import places_data
+from django.http import JsonResponse
+from .forms import CustomUserCreationForm
 
 
 class 관광거리API(APIView) :
@@ -32,8 +34,8 @@ class 야경명소API(APIView) :
         return Response(serializer.data)
         
 
-def login_view(request):
-    return render(request, 'login.html')
+def sign_up_view(request):
+    return render(request, 'sign_up.html')
 
 def home(request):
     return render(request, 'home.html')  # home.html 템플릿을 렌더링
@@ -50,6 +52,9 @@ def night_place_view(request):
 
 def flower_place_view(request):
     return render(request, 'flower_place.html')
+
+def success_view(request):
+    return render(request, 'success.html')
 
 def trip_course_view(request):
     return render(request, 'trip_course.html')
@@ -77,29 +82,42 @@ def flower_course_detail_view(request, place_name):
 
 
 def login_view(request):
-    form = UserCreationForm()  # 🔧 추가: form을 먼저 초기화
+    # 사용자 정의 폼 
+    signup_form = CustomUserCreationForm()
+    login_form = AuthenticationForm()
 
     if request.method == "POST":
-        # 로그인 처리
+        # 로그인 
         if 'username' in request.POST and 'password' in request.POST:
             username = request.POST.get('username')
             password = request.POST.get('password')
             user = authenticate(request, username=username, password=password)
-            if user is not None:
+            if user:
                 login(request, user)
                 messages.success(request, "Successfully logged in!")
                 return redirect('home')
             else:
                 messages.error(request, "Invalid username or password.")
-
-        # 회원가입 처리
-        elif 'password1' in request.POST and 'password2' in request.POST:
-            form = UserCreationForm(request.POST)
-            if form.is_valid():
-                new_user = form.save()
-                messages.success(request, f"Account created for {new_user.username}! Please log in.")
+        
+        # 회원가입 
+        elif 'email' in request.POST and 'password1' in request.POST:
+            signup_form = CustomUserCreationForm(request.POST)
+            if signup_form.is_valid():
+                signup_form.save()
+                messages.success(request, "회원가입이 완료되었습니다.")
                 return redirect('home')
             else:
-                messages.error(request, f"Signup failed: {form.errors}")
+                # 에러 메세지
+                for field, errors in signup_form.errors.items():
+                    for error in errors:
+                        messages.error(request, f"{field}: {error}")
+    
+    return render(request, 'login.html', {
+        'signup_form': signup_form,
+        'login_form': login_form,
+    })
 
-    return render(request, 'login.html', {'form': form})
+def logout_view(request):
+    logout(request) 
+    messages.success(request, "Successfully logged out!")  
+    return redirect('home') 

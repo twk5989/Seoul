@@ -1,11 +1,4 @@
 /* tourist.css */
-  
-.region1 {
-    text-align: left;
-    font-size: 14px;
-    color: #888;
-    margin-left:1px;
-  }
 
 header h1 {
     text-align: center;  /* 가운데 정렬 */
@@ -14,11 +7,13 @@ header h1 {
     margin-top: 150px;
 }
 
-header .sub-text {
-    text-align: center;  /* 가운데 정렬 */
-    font-size: 1.1em;    /* 글씨 크기 작게 설정 */
-    color: #555;         /* 색상 설정 */
-    margin-top: 20px;    /* 위쪽 여백 */
+header .center {
+    text-align: center; /* 가운데 정렬 */
+    font-family: 'Arial', sans-serif; /* 글씨체 설정 */
+    font-size: 28px; /* 글씨 크기 조정 */
+    font-weight: 500; /* 글씨 굵게 */
+    margin-top: 5%; /* 위쪽 여백 */
+    color: black; /* 글씨 색상 */
 }
 
 .image-gallery {
@@ -36,16 +31,6 @@ header .sub-text {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
- 
-.center {
-    text-align: center; /* 가운데 정렬 */
-    font-family: 'Arial', sans-serif; /* 글씨체 설정 */
-    font-size: 28px; /* 글씨 크기 조정 */
-    font-weight: 500; /* 글씨 굵게 */
-    margin-top: 40px; /* 위쪽 여백 */
-    color: #333; /* 글씨 색상 */
-}
-
 .divider {
     border-top: 2px solid #333; /* 실선 두께 2px, 색상 #333 */
     margin: 20px auto; /* 상하 여백 추가 */
@@ -53,89 +38,36 @@ header .sub-text {
     display: block;
 }
 
-.image-gallery-title {
-    text-align: center; /* 제목을 가운데 정렬 */
-    font-size: 24px; /* 제목 크기 조정 */
-    font-weight: bold; /* 제목 굵게 */
-    margin: 10px 0; /* 제목 위 아래 여백 */
-}
-
-
-.section-header {
-    display: flex;
-    justify-content: flex-start; /* 제목들이 왼쪽으로 정렬 */
-    gap: 20px;  /* 제목 사이에 간격을 줌 */
-    margin-bottom: 20px;  /* 제목과 이미지 간 간격 추가 */
-}
-
 .detail-info-title {
     font-size: 24px;  /* 글씨 크기 */
     font-weight: bold;  /* 굵은 글씨 */
     text-align: left;  /* 왼쪽 정렬 */
-    margin-top: 20px;  /* 위쪽 여백을 줄여서 위로 가까이 이동 */
+    margin-top: 2%;  /* 위쪽 여백을 줄여서 위로 가까이 이동 */
     margin-bottom: 5px;  /* 아래쪽 여백을 줄여서 아래와의 간격을 줄임 */
-    margin-left: 180px;  /* 왼쪽 여백 추가로 오른쪽으로 이동 */
+    margin-left: 10%;  /* 왼쪽 여백 추가로 오른쪽으로 이동 */
+}
+
+.detail-info p {
+    text-align:left; /* 텍스트 가운데 정렬 */
+    font-size: 16px;  /* 글씨 크기 (필요시 조정) */
+    line-height: 1.2;  /* 줄 간격 (필요시 조정) */
+    padding-left: 10%;
+    margin-top: 2%;
+    width: 80%;  /* 부모 요소 너비에 비례하여 80% 크기로 설정 (조정 가능) */
 }
 
 .divider1 {
     border-top: 2px solid #333; /* 실선 두께 2px, 색상 #333 */
-    margin: 10px auto; /* 상하 여백을 줄여서 실선과 제목 간의 간격을 좁힘 */
+    margin: 3% auto; /* 상하 여백을 줄여서 실선과 제목 간의 간격을 좁힘 */
     width: 80%;
     display: block;
-}
-
-p {
-    text-align: center;  /* 텍스트 가운데 정렬 */
-    font-size: 16px;  /* 글씨 크기 (필요시 조정) */
-    line-height: 1.2;  /* 줄 간격 (필요시 조정) */
-    margin: 0 auto;
-    width: 80%;  /* 부모 요소 너비에 비례하여 80% 크기로 설정 (조정 가능) */
-}
-
-.center-text {
-    text-align: center;
-}
-
-.center-map {
-    display: block;
-    margin: 0 auto;
-}
-
-.subtitle-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  margin: 30px auto;
-  width: fit-content;
-}
-
-.subtitle {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.subtitle.left {
-  text-align: right;
-  margin-right: 10px;
-}
-
-.subtitle.right {
-  text-align: left;
-  margin-left: 10px;
-}
-
-.middle-line {
-  width: 2px;
-  height: 50px;
-  background-color: #333;
 }
 
 .info-list {
   list-style-type: disc;
   list-style-position: inside;
-  padding-left: 140px;
+  padding-left: 10%;
+  margin-top: 2%;
   max-width: 100%;
 }
 

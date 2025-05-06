@@ -4,7 +4,7 @@ places_data = {
     'yeouido': {
         'title': '여의도 한강공원',
             'location': '서울 영등포구',
-            'description': '여의도 벚꽃축제는 서울에서 가장 유명한 봄 축제 중 하나로, 매년 4월에 여의도 한강공원에서 열립니다. 이 축제는 여의도 일대의 벚꽃이 만개하는 시기에 맞춰 다양한 문화 행사와 공연, 체험 활동이 함께 진행되어 많은 사람들이 방문합니다.',
+            'description': '여의도 벚꽃축제는 서울에서 가장 유명한 봄 축제 중 하나로, 매년 4월에 여의도 한강공원에서 열립니다.\n이 축제는 여의도 일대의 벚꽃이 만개하는 시기에 맞춰 다양한 문화 행사와 공연, 체험 활동이 함께 진행되어 많은 사람들이 방문합니다.',
             'images': [
                 'img/river/river1.jpg',
                 'img/river/river2.jpg',
@@ -24,7 +24,7 @@ places_data = {
     'seoul_forest': {
         'title': '서울숲',
             'location': '서울 성동구',
-            'description': '서울숲은 서울의 대표적인 벚꽃 명소로, 봄마다 화려한 벚꽃이 공원 곳곳을 물들입니다 도심 한복판에서 만나는 자연 속에서 벚꽃을 즐길 수 있어, 많은 사람들이 찾는 인기 장소입니다. ',
+            'description': '서울숲은 서울의 대표적인 벚꽃 명소로, 봄마다 화려한 벚꽃이 공원 곳곳을 물들입니다.\n 도심 한복판에서 만나는 자연 속에서 벚꽃을 즐길 수 있어, 많은 사람들이 찾는 인기 장소입니다. ',
             'images': [
                 'img/seoul_forest/seoul_forest1.jpg',
                 'img/seoul_forest/seoul_forest2.jpg',
@@ -65,7 +65,7 @@ places_data = {
     'jungnangcheon': {
          'title': '중랑천 벚꽃길',
             'location': '서울 중랑구',
-            'description': '중랑천 벚꽃길은 서울 동북부를 흐르는 중랑천을 따라 펼쳐지는 벚꽃 명소입니다. 매년 봄, 중랑천 주변의 벚꽃들이 만개하며, 하천을 따라 이어지는 벚꽃길은 환상적인 풍경을 선사합니다. ',
+            'description': '중랑천 벚꽃길은 서울 동북부를 흐르는 중랑천을 따라 펼쳐지는 벚꽃 명소입니다. \n매년 봄, 중랑천 주변의 벚꽃들이 만개하며, 하천을 따라 이어지는 벚꽃길은 환상적인 풍경을 선사합니다. ',
             'images': [
                 'img/jungnangcheon/jungnangcheon1.jpg',
                 'img/jungnangcheon/jungnangcheon2.jpg',
@@ -85,7 +85,7 @@ places_data = {
     'Namsan_Tower': {
         'title': '남산서울타워',
             'location': '서울특별시 용산구 남산공원길 105',
-            'description': '남산서울타워는 서울 중심부에 위치한 대표적인 관광 명소로, 서울 전경을 360도로 감상할 수 있는 전망대입니다. 특히 밤에는 도심의 야경과 어우러져 낭만적인 분위기를 자아내며 데이트 명소로도 유명합니다. ',
+            'description': '남산서울타워는 서울 중심부에 위치한 대표적인 관광 명소로, 서울 전경을 360도로 감상할 수 있는 전망대입니다.\n특히 밤에는 도심의 야경과 어우러져 낭만적인 분위기를 자아내며 데이트 명소로도 유명합니다. ',
             'images': [
                 'img/namsan_tower/Namsan_Tower1.jpg',
                 'img/namsan_tower/Namsan_Tower2.jpg',
@@ -106,7 +106,7 @@ places_data = {
     'Dongdaemun Design Plaza': {
         'title': '동대문디자인플라자 (DDP)',
             'location': '서울특별시 중구 을지로 281',
-            'description': '동대문디자인플라자(DDP)는 서울의 대표적인 랜드마크 중 하나로, 세계적인 건축가 자하 하디드가 설계한 미래형 복합 문화공간입니다. 다양한 전시, 패션쇼, 디자인 관련 행사들이 열리며, 독특한 곡선형 구조로 유명합니다.',
+            'description': '동대문디자인플라자(DDP)는 서울의 대표적인 랜드마크 중 하나로, 세계적인 건축가 자하 하디드가 설계한 미래형 복합 문화공간입니다.\n다양한 전시, 패션쇼, 디자인 관련 행사들이 열리며, 독특한 곡선형 구조로 유명합니다.',
             'images': [
                 'img/ddp/DDP1.jpg',
                 'img/ddp/DDP2.jpg',
@@ -143,5 +143,27 @@ places_data = {
                 '안내센터': '02-1330 (관광안내센터)',
                 '홈페이지': 'https://korean.visitseoul.net/shopping/Myeongdong_/1373',
             }
+    },
+
+    'lotteworld': {
+        'title': '롯데월드',
+            'location': '서울특별시 송파구 올림픽로 240',
+            'description': '롯데월드는 서울 송파구에 위치한 대형 테마파크로, 실내외 놀이공원인 롯데월드 어드벤처와 매직아일랜드로 구성되어 있습니다.\n다양한 놀이기구, 퍼레이드, 아이스링크 등 가족과 연인 모두가 즐길 수 있는 복합 엔터테인먼트 공간입니다.',
+            'images': [
+                'img/lotteworld/lotteworld1.jpg',
+                'img/lotteworld/lotteworld2.jpg',
+                'img/lotteworld/lotteworld3.jpg',
+            ],
+            'map_url': 'https://www.google.com/maps/embed/v1/place?q=롯데월드,서울&key=YOUR_GOOGLE_MAPS_API_KEY',
+            'info': {
+                '위치': '서울특별시 송파구 올림픽로 240',
+                '운영시간': '10:00~21:00 (변동 가능)',
+                '입장료': '1일권 성인 62,000원 / 청소년 55,000원 / 어린이 50,000원',
+                '교통': '지하철 2호선 잠실역 4번 출구 도보 3분',
+                '주요시설': '어드벤처, 매직아일랜드, 아이스링크, 민속박물관, 쇼핑몰',
+                '안내센터': '1661-2000 (롯데월드 고객센터)',
+                '홈페이지': 'https://adventure.lotteworld.com',
     }
+}
+
 }

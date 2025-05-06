@@ -9,6 +9,8 @@ urlpatterns = [
     path('api/night_table/', 야경명소API.as_view(), name = 'night_table_api'),
 
     path('login/', views.login_view, name='login'),
+    
+    path('logout/', views.logout_view, name='logout'),
 
     path('menu/', views.menu_view, name='menu'),
 
@@ -25,6 +27,8 @@ urlpatterns = [
     path('place/<int:pk>/', views.place_detail, name='place_detail'),
     
     path('night/<int:pk>/', views.night_detail, name='night_detail'),
+
+    path('success/', views.success_view, name='success'),
 
     path('place/<str:place_name>/', views.flower_course_detail_view, name='flower_course_detail'),
      #이거는 장소 상세페이지를 하나로 처리한 것
