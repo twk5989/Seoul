@@ -15,7 +15,7 @@
       <!-- menu.html 내 네비게이션 바 -->
       <nav id="navbar" class="navbar navbar-expand-lg transition-colors duration-500" style="background-color: transparent;">
         <div class="container-fluid">
-          <a class="navbar-logo text-xl font-bold text-gray-800" href="#">로고</a>
+         <a class="navbar-logo flex items-center" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="로고" class="h-[70px] w-auto"></a>
           <ul class="navbar-nav flex justify-center gap-2 pl-0 max-w-screen-xl ml-[10vw]">
             <li class="nav-item text-[1.2vw] px-[1vw]">
               <a class="nav-link" href="{% url 'home' %}">홈</a>
@@ -35,12 +35,12 @@
           </ul>
 
           <!--검색/사람 아이콘 버튼-->
-          <div class="button-container flex bg-white w-[150px] h-[40px] items-center justify-around rounded-[10px]">
-            <button class="button w-[40px] h-[40px] rounded-full bg-transparent flex items-center justify-center text-[#7bc5ed] hover:-translate-y-1 transition-all">
+          <div class="button-container flex bg-white w-[40px] h-[40px] items-center justify-around rounded-[10px]">
+             <a href="{% url 'search' %}" class="button w-[40px] h-[40px] rounded-full bg-transparent flex items-center justify-center text-[#7bc5ed] hover:-translate-y-1 transition-all">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linejoin="round" stroke-linecap="round"></path>
               </svg>
-            </button>
+            </a>
 
             <a href="{% url 'login' %}" class="button w-[40px] h-[40px] rounded-full bg-transparent flex items-center justify-center text-[#7bc5ed] hover:-translate-y-1 transition-all">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

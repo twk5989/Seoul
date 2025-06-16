@@ -121,3 +121,6 @@ def logout_view(request):
     logout(request) 
     messages.success(request, "Successfully logged out!")  
     return redirect('home') 
+
+def search(request):
+    return render(request, 'search.html')

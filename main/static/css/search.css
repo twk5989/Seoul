@@ -1,0 +1,103 @@
+.search-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 28rem;
+  margin: 2rem auto; /* 위아래 여유 주기 */
+  padding: 0.6rem;
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.search-box:hover {
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+}
+
+.search-text {
+  flex-grow: 1;
+  padding: 0.75rem 1.25rem;
+  color: #334155; /* 좀 더 진한 그레이 */
+  font-size: 1rem;
+  border: 1px solid #cbd5e1; /* 부드러운 연회색 */
+  border-right: none;
+  border-top-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+  background-color: #f9fafb;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-text::placeholder {
+  color: #94a3b8; /* placeholder 그레이 */
+  font-style: italic;
+}
+
+.search-text:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+}
+
+.search-btn {
+  background: linear-gradient(45deg, #3b82f6, #2563eb);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-top-right-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-btn:hover {
+  background: linear-gradient(45deg, #2563eb, #1e40af);
+  box-shadow: 0 6px 12px rgba(30, 64, 175, 0.5);
+}
+
+.search-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  stroke-width: 2.5;
+}
+
+
+.search-info-box {
+  background-color: #f3f4f6; /* 연한 회색 */
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  max-width: 28rem;
+  margin: 1rem auto 0; /* 위에 1rem 띄우고 좌우 가운데 정렬 */
+  color: #374151; /* 다크 그레이 텍스트 */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 1rem;
+  text-align: center;
+}
+
+
+#districts {
+  display: flex;
+  flex-wrap: wrap; /* 여러 줄 가능 */
+  gap: 0.5rem;     /* 버튼 사이 간격 */
+  justify-content: center; /* 가운데 정렬 */
+}
+
+#districts button {
+  background-color: #e2e8f0; /* 연한 회색 */
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.375rem; /* 둥근 모서리 */
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#districts button:hover {
+  background-color: #3b82f6; /* 파란색 */
+  color: white;
+}
