@@ -13,6 +13,8 @@ class 관광거리(models.Model):
      행정동 = models.TextField(blank=True, null=True)
      중심좌표X = models.FloatField(blank=True, null=True)
      중심좌표Y = models.FloatField(blank=True, null=True)
+     대표이미지 = models.TextField(blank=True, null=True)
+    
      
      class Meta:
         managed = False
@@ -80,12 +82,25 @@ class 야경명소(models.Model):
     주차안내 = models.TextField(blank=True, null=True)
     위도 = models.FloatField(blank=True, null=True)
     경도 = models.FloatField(blank=True, null=True)
+    대표이미지 = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'night_table'
 
-        
+class 유사한야경명소(models.Model):
+    id = models.AutoField(primary_key=True)
+    base = models.TextField(blank=True, null=True)
+    추천1 = models.TextField(blank=True, null=True) 
+    추천2 = models.TextField(blank=True, null=True)
+    추천3 = models.TextField(blank=True, null=True)
+    추천4 = models.TextField(blank=True, null=True)
+    추천5 = models.TextField(blank=True, null=True)
+    
+    class Meta :
+        managed = False
+        db_table = 'similar_night_place'
+
 
 class User(models.Model):
     username = models.CharField(max_length=150, unique=True)  # 아이디 필드
@@ -95,3 +110,4 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
+
