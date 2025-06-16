@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>홈</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 사용자 정의 스타일 -->
+  <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+
+  {% include 'menu.html' %}
+
+  <!-- 홈 섹션 -->
+  <div class="relative w-screen h-[70vh] min-h-[500px] max-h-[1000px] bg-neutral-100 overflow-visible transition-colors duration-500 home-wrapper">
+
+    <!-- 텍스트 박스 -->
+    <div class="absolute top-1/2 left-[13%] -translate-y-1/2 w-[28%] min-w-[200px] max-w-[400px] z-10 text-box">
+      <h1 id="title" class="text-white bg-black w-fit px-[0.8vw] py-[0.4vw] rounded-[0.6vw] text-[1.6vw] leading-tight">낭만이 가득한 여행</h1>
+      <p id="desc1" class="text-black mt-[2.5vw] mb-[1vw] text-[2.2vw] leading-relaxed">주말에 낭만가득<br>서울 여행지 추천!</p>
+      <h2 id="desc2" class="text-[1vw] border-b border-black pb-[0.4vw] w-[6vw] leading-relaxed mt-[0.7vw]">자세히 보기</h2>
+    </div>
+
+    <!-- 슬라이더 -->
+    <div class="absolute right-[2.5vw] bottom-[-6vh] w-[50vw] h-[60vh] min-w-[300px] max-w-[800px] min-h-[400px] max-h-[700px] overflow-hidden bg-white rounded-[0.5vw] shadow-[0_0.5vw_1vw_rgba(0,0,0,0.3)] z-5 slider-container">
+      <div id="slider" class="slider">
+        <div class="slide"><img src="{% static 'img/img3.jpg' %}" alt="slide1"></div>
+        <div class="slide"><img src="{% static 'img/img1.jpg' %}" alt="slide2"></div>
+        <div class="slide"><img src="{% static 'img/img2.jpg' %}" alt="slide3"></div>
+      </div>
+      <div id="dots" class="dots"></div>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="{% static 'js/home.js' %}"></script>
+
+</body>
+</html>

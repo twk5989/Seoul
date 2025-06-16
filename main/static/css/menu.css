@@ -1,0 +1,14 @@
+/* 애니메이션 효과만 유지 */
+
+.menu .button:hover {
+  transform: translateY(-3px);
+}
+
+.menu .nav-item {
+  font-size: 1.2vw;
+}
+
+/* 필요하다면 아이콘 사이즈 커스터마이징 */
+.menu .icon {
+  font-size: 20px;
+}

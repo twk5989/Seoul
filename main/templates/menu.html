@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    {% load static %}
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
+  </head>
+  <body>
+    <div class="menu">
+      <!-- menu.html 내 네비게이션 바 -->
+      <nav id="navbar" class="navbar navbar-expand-lg transition-colors duration-500" style="background-color: transparent;">
+        <div class="container-fluid">
+          <a class="navbar-logo text-xl font-bold text-gray-800" href="#">로고</a>
+          <ul class="navbar-nav flex justify-center gap-2 pl-0 max-w-screen-xl ml-[10vw]">
+            <li class="nav-item text-[1.2vw] px-[1vw]">
+              <a class="nav-link" href="{% url 'home' %}">홈</a>
+            </li>
+            <li class="nav-item text-[1.2vw] px-[1vw]">
+              <a class="nav-link" href="{% url 'night_place' %}">야경 명소</a>
+            </li>
+            <li class="nav-item text-[1.2vw] px-[1vw]">
+              <a class="nav-link" href="{% url 'place' %}">관광 명소</a>
+            </li>
+            <li class="nav-item text-[1.2vw] px-[1vw]">
+              <a class="nav-link" href="{% url 'flower_place' %}">벚꽃명소</a>
+            </li>
+            <li class="nav-item text-[1.2vw] px-[1vw]">
+              <a class="nav-link" href="{% url 'trip_course' %}">여행 코스</a>
+            </li>
+          </ul>
+
+          <!--검색/사람 아이콘 버튼-->
+          <div class="button-container flex bg-white w-[150px] h-[40px] items-center justify-around rounded-[10px]">
+            <button class="button w-[40px] h-[40px] rounded-full bg-transparent flex items-center justify-center text-[#7bc5ed] hover:-translate-y-1 transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linejoin="round" stroke-linecap="round"></path>
+              </svg>
+            </button>
+
+            <a href="{% url 'login' %}" class="button w-[40px] h-[40px] rounded-full bg-transparent flex items-center justify-center text-[#7bc5ed] hover:-translate-y-1 transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Bootstrap 5 JS, Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
