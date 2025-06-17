@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관광명소상세페이지</title>
+    <link rel="stylesheet" href="{% static 'css/place_detail.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    {% include 'menu.html' %}
+    <header>    
+        <h1>{{ place.최종표기명 }}</h1>
+    </header>
+
+    <main>
+        <div class="divider"></div>
+        <div class="image-gallery">
+            <img src="{{ place.대표이미지 }}" alt="대표 이미지" class="thumb" />
+        </div>
+        <div class="divider"></div>
+            
+            <h3>상세정보</h3>
+
+            <iframe
+                width="600"
+                height="450"
+                style="border:0; display: block; margin: 0 auto;"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q={{ 위도 }},{{ 경도 }}&hl=ko&z=16&output=embed">
+            </iframe>
+
+            <h3>주요 정보</h3>
+            <ul class="info-list">
+                <li><strong>위치:</strong> {{place.지번주소}}</li>
+            </ul>
+            <br>
+            <br>
+            <br>
+
+
+
+    <!-- 푸터 -->
+    <footer>
+        <p>© 2025 서울 여행 가이드. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

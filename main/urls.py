@@ -32,4 +32,6 @@ urlpatterns = [
 
     path('place/<str:place_name>/', views.flower_course_detail_view, name='flower_course_detail'),
      #이거는 장소 상세페이지를 하나로 처리한 것
+
+    path('search/', views.search, name="search"),
 ]
