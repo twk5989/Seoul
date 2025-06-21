@@ -1,4 +1,4 @@
-// tailwind.config.js
+// 설정 변경
 module.exports = {
   content: [
     './main/templates/**/*.html',
