@@ -1,6 +1,6 @@
 # data.py
 
-places_data = {
+flower_course_data = {
     'yeouido': {
         'title': '여의도 한강공원',
             'location': '서울 영등포구',
@@ -81,7 +81,8 @@ places_data = {
                 '홈페이지': 'https://www.jungnang.go.kr',
             }
         },
-
+}
+places_data= {
     'Namsan_Tower': {
         'title': '남산서울타워',
             'location': '서울특별시 용산구 남산공원길 105',

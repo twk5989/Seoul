@@ -10,6 +10,7 @@ from .models import 야경명소
 from .serializers import 야경명소Serializer
 from .data import places_data
 from django.http import JsonResponse
+from .data import flower_course_data
 from .forms import CustomUserCreationForm
 from .models import 유사한야경명소
 
