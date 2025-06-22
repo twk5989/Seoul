@@ -11,18 +11,6 @@
     />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
-    <style>
-      /* night_place.html 또는 night_detail.html에서 적용될 스타일 */
-      .navbar.dark-theme .navbar-logo,
-      .navbar.dark-theme .nav-link,
-      .navbar.dark-theme .button-container .button svg {
-        color: white !important; /* 텍스트 및 SVG 아이콘 색상을 흰색으로 변경 */
-      }
-
-      .navbar.dark-theme .button-container {
-        background-color: rgba(255, 255, 255, 0.2) !important; /* 버튼 컨테이너 배경색을 투명하게 */
-      }
-    </style>
   </head>
   <body>
     <div class="menu">
@@ -66,19 +54,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const navbar = document.getElementById('navbar');
-        const currentPath = window.location.pathname;
-
-        // 'night_place' 또는 'night_detail' URL 패턴에 따라 클래스 추가
-        if (currentPath.includes('/night_place/') || currentPath.includes('/night_detail/')) {
-          navbar.classList.add('dark-theme');
-        } else {
-          navbar.classList.remove('dark-theme');
-        }
-      });
-    </script>
   </body>
 </html>

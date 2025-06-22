@@ -1,223 +1,74 @@
-body {
-      margin: 0;
-      height: 100vh;
-      width: 100vw;
-      position: relative; /* 자식 요소의 absolute/fixed 위치 지정을 위한 기준점 */
-      background-color: #000; /* 빗방울 배경의 기본색과 맞춤 */
-}
-.place_container { /* 버튼까지 포함한 모든 스타일 */
-    display: flex;
-    max-width: 1200px;
-    margin: auto;
-    gap: 40px;
-    font-family: 'Noto Sans KR', sans-serif;
-    padding: 5px;
+/* tourist.css */
+
+.place_container {   /* 버튼까지 포함한 모든 스타일 */
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #fff;
+  padding: 5px;
 }
 
 .list-section {
-    flex: 3;
+  flex: 3;
 }
 
 .result-count {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #eee;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
-.region {
-    font-size: 14px;
-    color: #888;
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
 }
+
+.thumb {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card-info h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
 
 .places span {
-    display: inline-block;
-    background: #f1f1f1;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 12px;
-    margin: 2px 4px 2px 0;
+  display: inline-block;
+  background: #f1f1f1;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin: 2px 4px 2px 0;
 }
 
 .filter-section {
-    flex: 1;
+  flex: 1;
 }
 
 .filter-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #eee;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
+
 
 .region-filter button {
-    background-color: rgba(50, 50, 50, 0.7);
-    border: 1px solid #777;
-    color: #eee;
-    padding: 6px 10px;
-    margin: 4px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.region-filter button:hover {
-    background-color: rgba(80, 80, 80, 0.9);
-}
-
-.background-pattern {
-    position: fixed; /* 뷰포트에 고정 */
-    inset: 0; /* top, right, bottom, left를 0으로 설정하여 화면 전체를 채움 */
-    overflow: hidden; /* 혹시 모를 내부 요소의 넘침 방지 */
-    z-index: -1; /* 다른 콘텐츠보다 뒤에 오도록 */
-}
-
-/* 빗방울 효과*/
-.background-pattern::before {
-    content: "";
-    position: absolute;
-    inset: -145%;
-    rotate: -45deg;
-    background: #000;
-    background-image: radial-gradient(4px 100px at 0px 235px, rgb(242, 242, 242), #0000),
-                      radial-gradient(4px 100px at 300px 235px, rgb(242, 246, 242), #0000),
-                      radial-gradient(1.5px 1.5px at 150px 117.5px, rgb(243, 238, 238) 100%, #0000 150%),
-                      radial-gradient(4px 100px at 0px 252px, rgb(241, 245, 241), #0000),
-                      radial-gradient(4px 100px at 300px 252px, rgb(245, 247, 245), #0000),
-                      radial-gradient(1.5px 1.5px at 150px 126px, rgb(238, 244, 238) 100%, #0000 150%),
-                      radial-gradient(4px 100px at 0px 150px, rgb(235, 240, 235), #0000),
-                      radial-gradient(4px 100px at 300px 150px, rgb(238, 242, 238), #0000),
-                      radial-gradient(1.5px 1.5px at 150px 75px, rgb(244, 251, 244) 100%, #0000 150%),
-                      radial-gradient(4px 100px at 300px 210px, rgb(244, 245, 244), #0000),
-                      radial-gradient(1.5px 1.5px at 150px 105px, rgb(234, 239, 234) 100%, #0000 150%);
-    background-size:
-        300px 235px, 300px 235px, 300px 235px,
-        300px 252px, 300px 252px, 300px 252px,
-        300px 150px, 300px 150px, 300px 150px,
-        300px 253px, 300px 253px, 300px 253px,
-        300px 204px, 300px 204px, 300px 204px,
-        300px 134px, 300px 134px, 300px 134px,
-        300px 179px, 300px 179px, 300px 179px,
-        300px 299px, 300px 299px, 300px 299px,
-        300px 215px, 300px 215px, 300px 215px,
-        300px 281px, 300px 281px, 300px 281px,
-        300px 158px, 300px 158px, 300px 158px,
-        300px 210px, 300px 210px, 300px 210px;
-    animation: hi 150s linear infinite;
-}
-
-@keyframes hi {
-    0% {
-        background-position:
-            0px 220px, 3px 220px, 151.5px 337.5px,
-            25px 24px, 28px 24px, 176.5px 150px,
-            50px 16px, 53px 16px, 201.5px 91px,
-            75px 224px, 78px 224px, 226.5px 350.5px,
-            100px 19px, 103px 19px, 251.5px 121px,
-            125px 120px, 128px 120px, 276.5px 187px,
-            150px 31px, 153px 31px, 301.5px 120.5px,
-            175px 235px, 178px 235px, 326.5px 384.5px,
-            200px 121px, 203px 121px, 351.5px 228.5px,
-            225px 224px, 228px 224px, 376.5px 364.5px,
-            250px 26px, 253px 26px, 401.5px 105px,
-            275px 75px, 278px 75px, 426.5px 180px;
-    }
-    to {
-        background-position:
-            0px 6800px, 3px 6800px, 151.5px 6917.5px,
-            25px 13632px, 28px 13632px, 176.5px 13758px,
-            50px 5416px, 53px 5416px, 201.5px 5491px,
-            75px 17175px, 78px 17175px, 226.5px 17301.5px,
-            100px 5119px, 103px 5119px, 251.5px 5221px,
-            125px 8428px, 128px 8428px, 276.5px 8495px,
-            150px 9876px, 153px 9876px, 301.5px 9965.5px,
-            175px 13391px, 178px 13391px, 326.5px 13540.5px,
-            200px 14741px, 203px 14741px, 351.5px 14848.5px,
-            225px 18770px, 228px 18770px, 376.5px 18910.5px,
-            250px 5082px, 253px 5082px, 401.5px 5161px,
-            275px 6375px, 278px 6375px, 426.5px 6480px;
-    }
-}
-/* 슬라이드 부분 */
-.slider-wrapper {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: nowrap;
-  overflow: hidden;
-}
-
-.card-slide {
-  flex: 0 0 calc(50% - 0.5rem);
-  background: #1a1a1a;
-  color: #f2f2f2;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
-}
-
-.slider-controls {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.slider-controls button {
-  background: #333;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-
-.slider-controls button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-/* 카드 스타일 */ 
-.card {
-  padding: 20px;
-  width: 330px;
-  min-height: 370px;
-  border-radius: 20px;
-  background: #212121;
-  box-shadow: 5px 5px 8px #1b1b1b,
-             -5px -5px 8px #272727;
-  transition: 0.4s;
-}
-
-.card:hover {
-  translate: 0 -10px;
-}
-
-.card-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #b2eccf;
-  margin: 15px 0 0 10px;
-}
-
-.card-image {
-  min-height: 170px;
-  background-color: #313131;
-  border-radius: 15px;
-  background: #313131;
-  box-shadow: inset 5px 5px 3px #2f2f2f,
-            inset -5px -5px 3px #333333;
-}
-
-.card-body {
-  margin: 13px 0 0 10px;
-  color: rgb(184, 184, 184);
-  font-size: 15px;
-}
-
-.footer {
-  float: right;
-  margin: 28px 0 0 18px;
+  display: inline-block;
+  margin: 4px;
+  padding: 6px 10px;
+  background: #f4f4f4;
+  border-radius: 14px;
   font-size: 13px;
-  color: #b3b3b3;
-}
-
-.by-name {
-  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s;
 }

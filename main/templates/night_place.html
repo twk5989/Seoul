@@ -6,25 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>야경명소</title>
     <link rel="stylesheet" href="{% static 'css/night_place.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div class="background-pattern"></div>
-
     {% include 'menu.html' %}
     <div class = "place_container">
         <div class="list-section">
             <div class = "result-count">총 <span>0</span>건</div>
-            <div id="night_table-data-list" class="slider-wrapper"></div>
-            <div class="slider-controls">
-  <button id="prevBtn">←</button>
-  <button id="nextBtn">→</button>
-</div>
+            <div id="night_table-data-list"></div>  <!--카드들의 집합 -->
         </div>
         <div class="filter-section">
-            <div class="filter-title">지역 선택</div>
+          <div class="filter-title">지역 선택</div>
             <div class="region-filter">
                 <div id = "districts">
-                <button onclick = "loadData('전체')">전체</button>
                 <button onclick = "loadData('강남구')">강남구</button>
                 <button onclick = "loadData('도봉구')">도봉구</button>
                 <button onclick = "loadData('동대문구')">동대문구</button>
@@ -52,8 +46,9 @@
                 <button onclick = "loadData('노원구')">노원구</button>
                 </div>
             </div>
+          </div>
         </div>
-    </div>
-    <script src="{% static 'js/night_place.js' %}?v=2"></script>
+        <script src="{% static 'js/night_place.js' %}"></script>
+
 </body>
 </html>
