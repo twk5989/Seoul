@@ -97,10 +97,10 @@ def night_detail(request, pk) :
 from .data import flower_course_data, places_data
 
 def flower_course_detail_view(request, place_name):
-    context = flower_course_data.get(place_name)  # 우선 꽃 코스에서 찾기
+    context = flower_course_data.get(place_name)  #일단은 flower data에서 탐색을 함
 
-    if context is None:
-        context = places_data.get(place_name)  # 없으면 일반 명소에서 찾기
+    if context is None:    #조건문=데이터가 없다면 place data에서 찾음
+        context = places_data.get(place_name)  
 
     if context is None:
         context = {'title': '존재하지 않는 장소입니다.'}
