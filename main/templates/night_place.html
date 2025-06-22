@@ -5,17 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>야경명소</title>
-    <link rel="stylesheet" href="{% static 'css/place.css' %}">
+    <link rel="stylesheet" href="{% static 'css/night_place.css' %}">
+    <style>
+        .result-count, .filter-title, .region-filter button {
+            color: #eee;
+        }
+    </style>
 </head>
 <body>
+    <div class="background-pattern"></div>
+
     {% include 'menu.html' %}
     <div class = "place_container">
         <div class="list-section">
             <div class = "result-count">총 <span>0</span>건</div>
-            <div id="night_table-data-list"></div>
+            <div id="night_table-data-list" class="slider-wrapper"></div>
+            <div class="slider-controls">
+  <button id="prevBtn">←</button>
+  <button id="nextBtn">→</button>
+</div>
         </div>
         <div class="filter-section">
-          <div class="filter-title">지역 선택</div>
+            <div class="filter-title">지역 선택</div>
             <div class="region-filter">
                 <div id = "districts">
                 <button onclick = "loadData('전체')">전체</button>
@@ -46,10 +57,8 @@
                 <button onclick = "loadData('노원구')">노원구</button>
                 </div>
             </div>
-          </div>
         </div>
-        <script src="{% static 'js/night_place.js' %}?v=2"></script>
-
-
+    </div>
+    <script src="{% static 'js/night_place.js' %}?v=2"></script>
 </body>
 </html>
