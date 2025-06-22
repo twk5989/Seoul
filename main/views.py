@@ -94,8 +94,13 @@ def night_detail(request, pk) :
     })
 
 #원준이가 만든 명소 두가지 부분
+from .data import flower_course_data, places_data
+
 def flower_course_detail_view(request, place_name):
-    context = places_data.get(place_name)
+    context = flower_course_data.get(place_name)  # 우선 꽃 코스에서 찾기
+
+    if context is None:
+        context = places_data.get(place_name)  # 없으면 일반 명소에서 찾기
 
     if context is None:
         context = {'title': '존재하지 않는 장소입니다.'}
