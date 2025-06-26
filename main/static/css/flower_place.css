@@ -1,4 +1,9 @@
 /* tourist.css */
+body {
+  margin: 0;
+  background: linear-gradient(to bottom, #fff0f5, #ffd6e0, #ffe4ec);
+  color: #333;
+}
 
 header h1 {
     text-align: center;  /* 가운데 정렬 */

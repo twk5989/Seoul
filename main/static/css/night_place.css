@@ -1,4 +1,9 @@
 /* tourist.css */
+body {
+  background: linear-gradient(to bottom, #1a1a2e, #16213e, #0f3460); /* 어두운 밤하늘 느낌 */
+  color: #eee;
+}
+
 
 .place_container {   /* 버튼까지 포함한 모든 스타일 */
   display: flex;
