@@ -14,7 +14,7 @@
     <div class="max-w-7xl mx-auto space-y-10">
       
       <!-- 총 몇 건 표시 -->
-      <div class="text-lg mb-5">총 <span>4</span>건</div>
+      <div class="text-lg mb-5">총 <span>5</span>건</div>
 
       <!-- 관광 카드 리스트 -->
       <div class="space-y-8">
@@ -89,6 +89,42 @@
             </div>
           </div>
           <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 6.7km</div>
+        </div>
+
+        <!-- 카드 5 -->
+        <div class="flex gap-4 items-start border-b pb-4">
+          <img src="{% static 'img/olympic/olympic_park_1.jpg' %}" alt="올림픽공원" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
+          <div class="flex-1">
+            <a href="{% url 'flower_course_detail' place_name='olympic_park' %}" class="text-xl font-bold text-black hover:underline">
+              올림픽공원
+            </a>
+            <p class="text-sm text-gray-500 mt-2">서울 송파구 올림픽로 424</p>
+            <p class="text-xs text-gray-700 my-1">#공원 #데이트코스 #피크닉</p>
+            <div class="flex flex-wrap mt-2">
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">몽촌토성 망월봉</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">서울백제 어린이 박물관</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">올림픽공원 한얼광장</span>
+            </div>
+          </div>
+          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 6.5km</div>
+        </div>
+
+        <!-- 카드 6 -->
+        <div class="flex gap-4 items-start border-b pb-4">
+          <img src="{% static 'img/jongro/jongro_4.jpg' %}" alt="북촌한옥마을" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
+          <div class="flex-1">
+            <a href="{% url 'flower_course_detail' place_name='jongro' %}" class="text-xl font-bold text-black hover:underline">
+              북촌한옥마을
+            </a>
+            <p class="text-sm text-gray-500 mt-2">서울 종로구 계동길 37</p>
+            <p class="text-xs text-gray-700 my-1">#한옥마을 #데이트코스 </p>
+            <div class="flex flex-wrap mt-2">
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">북촌박물관</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">헌법재판소</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">서울교육 박물관</span>
+            </div>
+          </div>
+          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 12.4km</div>
         </div>
 
       </div>
