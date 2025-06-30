@@ -1,15 +1,22 @@
 from django.shortcuts import render, redirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
+
 from .models import 관광거리
-from .serializers import 관광거리Serializer
 from .models import 야경명소
-from .serializers import 야경명소Serializer
 from .models import 유사한야경명소
-from .data import flower_course_data
-from django.contrib.auth import authenticate, login
+
+from .serializers import 야경명소Serializer
+from .serializers import 관광거리Serializer
+
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+
+from .forms import CustomUserCreationForm
+from django.http import JsonResponse
+from .data import places_data
+from .data import flower_course_data
 
 
 class 관광거리API(APIView) :
@@ -32,7 +39,8 @@ class 야경명소API(APIView) :
         serializer = 야경명소Serializer(data, many = True)
         return Response(serializer.data)
     
-
+def sign_up_view(request) :
+    return render(request, 'sign_up.html')
 
 def home(request):
     return render(request, 'home.html')  # home.html 템플릿을 렌더링
@@ -49,6 +57,9 @@ def night_place_view(request):
 
 def flower_place_view(request):
     return render(request, 'flower_place.html')
+
+def success_view(request):
+    return render(request, 'success.html')
 
 def trip_course_view(request):
     return render(request, 'trip_course.html')
@@ -70,17 +81,19 @@ def night_detail(request, pk) :
     return render(request, 'night_detail.html', {'night' : night})
 
 #원준이가 만든 명소 두가지 부분
+
+from .data import flower_course_data, places_data
+
 def flower_course_detail_view(request, place_name):
     context = flower_course_data.get(place_name)
+
+    if context is None:    #조건문=데이터가 없다면 place data에서 찾음
+        context = places_data.get(place_name)  
 
     if context is None:
         context = {'title': '존재하지 않는 장소입니다.'}
 
     return render(request, 'flower_course_detail.html', context)
-
-
-
-
 
 
 
@@ -105,11 +118,11 @@ def night_detail(request, pk) :
     })
 
 
-def success_view(request):
-    return render(request, 'sucess.html')
-
-
 def login_view(request):
+    # 사용자 정의 폼 
+    signup_form = CustomUserCreationForm()
+    login_form = AuthenticationForm()
+
     if request.method == "POST":
         # 로그인 처리
         if 'username' in request.POST and 'password' in request.POST:
@@ -123,16 +136,28 @@ def login_view(request):
             else:
                 messages.error(request, "Invalid username or password.")
 
-        # 회원가입 처리
-        elif 'password1' in request.POST and 'password2' in request.POST:
-            form = UserCreationForm(request.POST)
-            if form.is_valid():
-                new_user = form.save()
-                messages.success(request, f"Account created for {new_user.username}! Please log in.")
-                return redirect('sucess')
+        # 회원가입 
+        elif 'email' in request.POST and 'password1' in request.POST:
+            signup_form = CustomUserCreationForm(request.POST)
+            if signup_form.is_valid():
+                signup_form.save()
+                messages.success(request, "회원가입이 완료되었습니다.")
+                return redirect('home')
             else:
-                messages.error(request, f"Signup failed: {form.errors}")
-    else:
-        form = UserCreationForm()
+                # 에러 메세지
+                for field, errors in signup_form.errors.items():
+                    for error in errors:
+                        messages.error(request, f"{field}: {error}")
+    
+    return render(request, 'login.html', {
+        'signup_form': signup_form,
+        'login_form': login_form,
+    })
 
-    return render(request, 'login.html', {'form': form})
+def logout_view(request):
+    logout(request) 
+    messages.success(request, "Successfully logged out!")  
+    return redirect('home') 
+
+def search(request):
+    return render(request, 'search.html')
