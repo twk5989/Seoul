@@ -81,6 +81,47 @@ flower_course_data = {
                 '홈페이지': 'https://www.jungnang.go.kr',
             }
         },
+
+    'seoul_dreamforest': {
+        'title': '북서울 꿈의숲',
+            'location': '서울 강북구 월계로 173',
+            'description': '서울 시내 4번째 규모의 대형 공원으로, 옛 놀이공원 드림랜드 부지에 2009년 조성되었습니다. \n 자연 숲과 다양한 테마구역(연못, 폭포, 대나무숲, 잔디광장 등)이 잘 어우러져 있습니다.',
+            'images': [
+                'img/seoul_dreamforest/seoul_dreamforest_1.jpg',
+                'img/seoul_dreamforest/seoul_dreamforest_2.jpg',
+                'img/seoul_dreamforest/seoul_dreamforest_3.jpg',
+            ],
+            'map_url': 'https://www.google.com/maps/embed/v1/place?q=37.6208,127.0419&key=YOUR_GOOGLE_MAPS_API_KEY',
+            'info': {
+                '위치': '서울 강북구 월계로 173',
+                '운영시간': '24시간 운영',
+                '입장료': '무료',
+                '교통': '지하철 4호선 미아사거리역 1번 출구 버스 10분',
+                '주요시설': '숲속 산책로',
+                '안내센터': '02-2289-4000',
+                '홈페이지': 'https://parks.seoul.go.kr/template/sub/dreamforest.do',
+            }
+        },
+    'National_Cemetery': {
+        'title': '국립서울현충원',
+            'location': '서울 동작구 현충로 210',
+            'description': '국립서울현충원은 순국선열과 호국영령을 추모하는 곳으로 봄에는 아름다운 벚꽃명소로 인기가 많은 곳입니다. \n 특히 다른 곳에서는 쉽게 볼 수 없는 수양벚꽃이 아래로 늘어진 모습이 더욱 운치를 더합니다.',
+            'images': [
+                'img/National_Cemetery/현충원_1.jpg',
+                'img/National_Cemetery/현충원_2.jpg',
+                'img/National_Cemetery/현충원_3.jpg',
+            ],
+            'map_url': 'https://www.google.com/maps/embed/v1/place?q=37.5008,126.9770&key=YOUR_GOOGLE_MAPS_API_KEY',
+            'info': {
+                '위치': '서울 동작구 현충로 210',
+                '운영시간': '매일 06:00 ~ 18:00',
+                '입장료': '무료',
+                '교통': '동쟉역',
+                '주요시설': '현충원',
+                '안내센터': '1522-1555',
+                '홈페이지': 'https://www.snmb.mil.kr/',
+            }
+        }
 }
 places_data= {
     'Namsan_Tower': {
@@ -164,7 +205,49 @@ places_data= {
                 '주요시설': '어드벤처, 매직아일랜드, 아이스링크, 민속박물관, 쇼핑몰',
                 '안내센터': '1661-2000 (롯데월드 고객센터)',
                 '홈페이지': 'https://adventure.lotteworld.com',
-    }
-}
+            }
+        },
+    'olympic_park': {
+        'title': '올림픽공원',
+            'location': '서울 송파구 올림픽로 424',
+            'description': '드넓은 잔디밭과 다양한 문화행사가 열리는 도심 속 휴식처입니다. \n 자전거를 타거나 산책을 하며 여유려운 시간을 보내실 수 있습니다.',
+            'images': [
+                'img/olympic/olympic_park_2.jpg',
+                'img/olympic/olympic_park_3.jpg',
+                'img/olympic/olympic_park_4.jpg',
+            ],
+            'map_url': 'https://www.google.com/maps/embed/v1/place?q=37.5163,127.1213&key=YOUR_GOOGLE_MAPS_API_KEY',
+            'info': {
+                '위치': '서울 송파구 올림픽로 424',
+                '운영시간': '''도보나 자전거 출입 : 05:00 ~ 22:00 (광장지역은 24:00) \n
+                차량 출입 : 06:00 ~ 22:00 \n
+                차량 출차 : 동2문 - 00:00 ~ 24:00 / 북2문, 남2문 - 06:00 ~ 22:30''',
+                '입장료': '무료',
+                '교통': '한성백제역 2번출구',
+                '주요시설': '공원',
+                '안내센터': '02-2180-3516',
+                '홈페이지': 'https://www.ksponco.or.kr/olympicpark/menu.es?mid=a20101000000',
+            }
+        },
+    'jongro': {
+        'title': '북촌 한옥마을',
+            'location': '서울 종로구 계동길 37',
+            'description': '도심 속에서 전통 한옥의 아름다움과 고즈넉한 분위기를 느낄 수 있는 곳입니다. \n 다양한 체험 프로그램도 운영하고 있습니다.',
+            'images': [
+                'img/jongro/jongro_1.jpg',
+                'img/jongro/jongro_2.jpg',
+                'img/jongro/jongro_3.jpg',
+            ],
+            'map_url': 'https://www.google.com/maps/embed/v1/place?q=37.5826,126.9830&key=YOUR_GOOGLE_MAPS_API_KEY',
+            'info': {
+                '위치': '서울 종로구 계동길 37',
+                '운영시간': '매일 10:00 ~ 17:00',
+                '입장료': '무료',
+                '교통': '안국역',
+                '주요시설': '한옥마을',
+                '안내센터': '02-2148-4151',
+                '홈페이지': 'https://hanok.seoul.go.kr/front/index.do',
+            }
+        },
 
 }

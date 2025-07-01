@@ -21,7 +21,7 @@
     <div class="max-w-7xl mx-auto space-y-10">
       
       <!-- 총 몇 건 표시 -->
-      <div class="text-lg mb-5">총 <span>4</span>건</div>
+      <div class="text-lg mb-5">총 <span>5</span>건</div>
 
       <!-- 관광 카드 리스트 -->
       <div class="space-y-8">
@@ -96,6 +96,41 @@
             </div>
           </div>
           <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 3.28km</div>
+        </div>
+        <!-- 카드 5: 북서울꿈의숲 -->
+        <div class="flex gap-4 items-start border-b pb-4">
+          <img src="{% static 'img/flower/flower5.jpg' %}" alt="북서울 꿈의숲" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
+          <div class="flex-1">
+            <a href="{% url 'flower_course_detail' place_name='seoul_dreamforest' %}" class="text-xl font-bold text-black hover:underline">
+              북서울꿈의숲
+            </a>
+            <p class="text-sm text-gray-500 mt-2">서울 강북구</p>
+            <p class="text-xs text-gray-700 my-1">#당일코스 #추천코스</p>
+            <div class="flex flex-wrap mt-2">
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">월영지</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">창녕위궁</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">꿈의숲 아트센터</span>
+            </div>
+          </div>
+          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 5.24km</div>
+        </div>
+
+        <!-- 카드6: 국립서울현충원 -->
+        <div class="flex gap-4 items-start border-b pb-4">
+          <img src="{% static 'img/flower/flower6.jpg' %}" alt="국립서울현충원" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
+          <div class="flex-1">
+            <a href="{% url 'flower_course_detail' place_name='National_Cemetery' %}" class="text-xl font-bold text-black hover:underline">
+              국립서울현충원
+            </a>
+            <p class="text-sm text-gray-500 mt-2">서울 동작구</p>
+            <p class="text-xs text-gray-700 my-1">#당일코스 #추천코스</p>
+            <div class="flex flex-wrap mt-2">
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">현충탑</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">묘역</span>
+              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">전시관</span>
+            </div>
+          </div>
+          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 7.23km</div>
         </div>
 
       </div>
