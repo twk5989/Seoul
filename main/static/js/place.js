@@ -14,7 +14,7 @@ function loadData(구이름) {
             const div = document.createElement('div');
             div.className = 'card';
             div.innerHTML = `
-                <img src="img/sungnyemun.jpg" class="thumb" />
+                <img src="${item.대표이미지}" class="thumb" />
                 <div class = "card-info">
                     <h3><a href ="/place/${item.id}/">${item.최종표기명}</a></h3>
                     <p>${item.행정구}</p>

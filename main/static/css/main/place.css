@@ -27,6 +27,12 @@
   padding-bottom: 15px;
   border-bottom: 1px solid #e0e0e0;
 }
+.thumb {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 
 .card-info h3 {
   margin: 0;
