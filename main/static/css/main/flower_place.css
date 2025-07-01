@@ -1,0 +1,37 @@
+body {
+      margin: 0;
+      background: linear-gradient(to bottom, #fff0f5, #ffd6e0, #ffe4ec);
+      color: #333;
+    }
+    
+    .card-container {
+      background: rgba(250, 235, 240, 0.8);
+      backdrop-filter: blur(10px);
+      border: 4px solid rgba(255, 182, 193, 0.3);
+    }
+    
+    .card {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .card.center {
+      transform: scale(1.1);
+      z-index: 10;
+    }
+    
+    .card.side {
+      transform: scale(0.9);
+      opacity: 0.7;
+    }
+    
+    .nav-button {
+      background: rgba(255, 182, 193, 0.8);
+      border: 1px solid rgba(255, 105, 180, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .nav-button:hover {
+      background: rgba(255, 105, 180, 0.8);
+      transform: scale(1.1);
+    }

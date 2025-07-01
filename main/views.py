@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+import json
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -68,10 +69,6 @@ def place_detail(request, pk) :
         '경도' : place.중심좌표X,
         '위도' : place.중심좌표Y,
         })
-
-#여의도
-def detailed_page_yeouido(request):
-    return render(request, 'detailed_page_yeouido.html')
 
 def night_detail(request, pk) :
     night = 야경명소.objects.get(pk=pk)
@@ -151,3 +148,4 @@ def logout_view(request):
 
 def search(request):
     return render(request, 'search.html')
+

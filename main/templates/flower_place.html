@@ -6,13 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>관광 명소</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-  margin: 0;
-  background: linear-gradient(to bottom, #fff0f5, #ffd6e0, #ffe4ec);
-  color: #333;
-}
-  </style>
+  <link rel="stylesheet" href="{% static 'css/main/flower_place.css' %}">
 </head>
 <body class="bg-white font-sans">
   {% include 'menu.html' %}
@@ -20,123 +14,74 @@
   <div class="p-5">
     <div class="max-w-7xl mx-auto space-y-10">
       
-      <!-- 총 몇 건 표시 -->
-      <div class="text-lg mb-5">총 <span>5</span>건</div>
-
-      <!-- 관광 카드 리스트 -->
-      <div class="space-y-8">
-        
-        <!-- 카드 1: 여의도 한강공원 -->
-        <div class="flex gap-4 items-start border-b pb-4">
-          <img src="{% static 'img/flower/flower.jpg' %}" alt="여의도 한강공원" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
-          <div class="flex-1">
-            <a href="{% url 'flower_course_detail' place_name='yeouido' %}" class="text-xl font-bold text-black hover:underline">
-              여의도 한강공원
-            </a>
-            <p class="text-sm text-gray-500 mt-2">서울 영등포구</p>
-            <p class="text-xs text-gray-700 my-1">#당일코스 #추천코스</p>
-            <div class="flex flex-wrap mt-2">
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">벚꽃</span>
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">양화한강공원</span>
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">밤섬</span>
-            </div>
-          </div>
-          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 8.03km</div>
-        </div>
-
-        <!-- 카드 2: 서울숲 -->
-        <div class="flex gap-4 items-start border-b pb-4">
-          <img src="{% static 'img/flower/flower2.jpg' %}" alt="서울숲" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
-          <div class="flex-1">
-            <a href="{% url 'flower_course_detail' place_name='seoul_forest' %}" class="text-xl font-bold text-black hover:underline">
-              서울숲
-            </a>
-            <p class="text-sm text-gray-500 mt-2">서울 성수동</p>
-            <p class="text-xs text-gray-700 my-1">#당일코스 #추천코스</p>
-            <div class="flex flex-wrap mt-2">
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">서울숲</span>
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">서울숲데이트</span>
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">서울숲풍경</span>
-            </div>
-          </div>
-          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 4.98km</div>
-        </div>
-
-        <!-- 카드 3: 서울어린이대공원 -->
-        <div class="flex gap-4 items-start border-b pb-4">
-          <img src="{% static 'img/flower/flower3.jpg' %}" alt="서울어린이대공원" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
-          <div class="flex-1">
-            <a href="{% url 'flower_course_detail' place_name='seoul_children_park' %}" class="text-xl font-bold text-black hover:underline">
-              서울어린이대공원
-            </a>
-            <p class="text-sm text-gray-500 mt-2">서울 광진구</p>
-            <p class="text-xs text-gray-700 my-1">#당일코스 #추천코스</p>
-            <div class="flex flex-wrap mt-2">
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">어린이대공원</span>
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">어린이시설</span>
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">가족나들이</span>
-            </div>
-          </div>
-          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 2.98km</div>
-        </div>
-
-        <!-- 카드 4: 중랑천 -->
-        <div class="flex gap-4 items-start border-b pb-4">
-          <img src="{% static 'img/flower/flower4.jpg' %}" alt="중랑천" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
-          <div class="flex-1">
-            <a href="{% url 'flower_course_detail' place_name='jungnangcheon' %}" class="text-xl font-bold text-black hover:underline">
-              중랑천
-            </a>
-            <p class="text-sm text-gray-500 mt-2">서울 강북구</p>
-            <p class="text-xs text-gray-700 my-1">#당일코스 #추천코스</p>
-            <div class="flex flex-wrap mt-2">
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">중랑천산책</span>
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">중랑천둘레길</span>
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">서울강변변</span>
-            </div>
-          </div>
-          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 3.28km</div>
-        </div>
-        <!-- 카드 5: 북서울꿈의숲 -->
-        <div class="flex gap-4 items-start border-b pb-4">
-          <img src="{% static 'img/flower/flower5.jpg' %}" alt="북서울 꿈의숲" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
-          <div class="flex-1">
-            <a href="{% url 'flower_course_detail' place_name='seoul_dreamforest' %}" class="text-xl font-bold text-black hover:underline">
-              북서울꿈의숲
-            </a>
-            <p class="text-sm text-gray-500 mt-2">서울 강북구</p>
-            <p class="text-xs text-gray-700 my-1">#당일코스 #추천코스</p>
-            <div class="flex flex-wrap mt-2">
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">월영지</span>
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">창녕위궁</span>
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">꿈의숲 아트센터</span>
-            </div>
-          </div>
-          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 5.24km</div>
-        </div>
-
-        <!-- 카드6: 국립서울현충원 -->
-        <div class="flex gap-4 items-start border-b pb-4">
-          <img src="{% static 'img/flower/flower6.jpg' %}" alt="국립서울현충원" class="w-40 h-24 object-cover rounded-lg mt-2 ml-1" />
-          <div class="flex-1">
-            <a href="{% url 'flower_course_detail' place_name='National_Cemetery' %}" class="text-xl font-bold text-black hover:underline">
-              국립서울현충원
-            </a>
-            <p class="text-sm text-gray-500 mt-2">서울 동작구</p>
-            <p class="text-xs text-gray-700 my-1">#당일코스 #추천코스</p>
-            <div class="flex flex-wrap mt-2">
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">현충탑</span>
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">묘역</span>
-              <span class="bg-gray-200 rounded-full px-2 py-1 text-xs mr-2 mb-2">전시관</span>
-            </div>
-          </div>
-          <div class="text-xs text-gray-600 pt-1 ml-auto whitespace-nowrap">📍 7.23km</div>
-        </div>
-
+      <!-- 헤더 -->
+      <div class="text-left mb-8">
+        <h1 class="text-m mb-4 pl-16">📍총 6건</h1>
       </div>
 
+      <!-- 카드 컨테이너 -->
+      <div class="card-container rounded-3xl p-8 mx-auto max-w-6xl">
+        <h2 class="text-5xl font-bold text-center text-white mb-12" style="font-family: 'Arial Black', sans-serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Cherry Blossom Spot</h2>
+        
+        <!-- 슬라이더 컨테이너 -->
+        <div class="relative">
+          <div class="flex justify-center items-center space-x-6 mb-8" id="cardSlider">
+          </div>
+          
+          <!--하단 슬라이드 버튼 -->
+          <div class="flex justify-center space-x-4">
+            <button id="prevBtn" class="nav-button w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl">
+              ←
+            </button>
+            <button id="nextBtn" class="nav-button w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl">
+              →
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
+  <script>
+  // 목업 데이터는 여기 유지
+  const places = [
+    {
+      id: 'yeouido',
+      name: '여의도 한강공원',
+      image: '{% static "img/flower/flower.jpg" %}',
+      url: '{% url "flower_course_detail" place_name="yeouido" %}'
+    },
+    {
+      id: 'seoul_forest',
+      name: '서울숲',
+      image: '{% static "img/flower/flower2.jpg" %}',
+      url: '{% url "flower_course_detail" place_name="seoul_forest" %}'
+    },
+    {
+      id: 'seoul_children_park',
+      name: '서울어린이대공원',
+      image: '{% static "img/flower/flower3.jpg" %}',
+      url: '{% url "flower_course_detail" place_name="seoul_children_park" %}'
+    },
+    {
+      id: 'jungnangcheon',
+      name: '중랑천',
+      image: '{% static "img/flower/flower4.jpg" %}',
+      url: '{% url "flower_course_detail" place_name="jungnangcheon" %}'
+    },
+    {
+      id: 'seoul_dreamforest',
+      name: '북서울꿈의숲',
+      image: '{% static "img/flower/flower5.jpg" %}',
+      url: '{% url "flower_course_detail" place_name="seoul_dreamforest" %}'
+    },
+    {
+      id: 'National_Cemetery',
+      name: '국립서울현충원',
+      image: '{% static "img/flower/flower6.jpg" %}',
+      url: '{% url "flower_course_detail" place_name="National_Cemetery" %}'
+    }
+  ];
+</script>
+  <script src="{% static 'js/slider/flower_slider.js' %}"></script>
 </body>
 </html>
