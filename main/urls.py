@@ -8,6 +8,8 @@ urlpatterns = [
 
     path('api/night_table/', 야경명소API.as_view(), name = 'night_table_api'),
 
+    path('api/night_place/', 야경명소API.as_view(), name='night_place_api'),
+
     path('login/', views.login_view, name='login'),
     
     path('logout/', views.logout_view, name='logout'),

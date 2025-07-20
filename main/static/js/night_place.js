@@ -4,6 +4,7 @@
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {
+                        console.log(data);
                         const container = document.getElementById('night_table-data-list');
                         container.innerHTML = '';
     
