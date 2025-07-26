@@ -14,6 +14,8 @@ from django.http import JsonResponse
 from .data import flower_course_data
 from .forms import CustomUserCreationForm
 from .models import 유사한야경명소
+from django.db.models import Q
+ #여기서 Q는 검색할때에 and 와 or의 조건이다
 
 
 class 관광거리API(APIView) :
@@ -146,6 +148,19 @@ def logout_view(request):
     messages.success(request, "Successfully logged out!")  
     return redirect('home') 
 
-def search(request):
-    return render(request, 'search.html')
+def search_view(request):
+    if request.method == 'POST':
+        query = request.POST.get('query', '').strip()
 
+        야경결과 = 야경명소.objects.filter(Q(장소명__icontains=query) | Q(자치구__icontains=query))
+        관광결과 = 관광거리.objects.filter(Q(장소명__icontains=query) | Q(행정구__icontains=query))
+
+        context = {
+            'query': query,
+            '야경결과': 야경결과,
+            '관광결과': 관광결과,
+        }
+
+        return render(request, 'search_result.html', context)
+    
+    return redirect('home')

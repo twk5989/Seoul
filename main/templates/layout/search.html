@@ -1,0 +1,38 @@
+<!-- templates/search_result.html -->
+{% extends 'layout/menu.html' %}  {# layout이 있다면 그걸 extend하세요 #}
+
+{% block content %}
+<div class="p-6 max-w-4xl mx-auto">
+  <h2 class="text-2xl font-bold mb-4">"{{ query }}"에 대한 검색 결과</h2>
+
+  <h3 class="text-xl mt-6 mb-2 text-blue-600">야경명소</h3>
+  {% if 야경결과 %}
+    <ul class="space-y-2">
+      {% for item in 야경결과 %}
+        <li>
+          <a href="{% url 'night_detail' item.pk %}" class="text-blue-500 hover:underline">
+            {{ item.장소명 }} ({{ item.자치구 }})
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-gray-500">검색 결과가 없습니다.</p>
+  {% endif %}
+
+  <h3 class="text-xl mt-6 mb-2 text-green-600">관광명소</h3>
+  {% if 관광결과 %}
+    <ul class="space-y-2">
+      {% for item in 관광결과 %}
+        <li>
+          <a href="{% url 'place_detail' item.pk %}" class="text-green-500 hover:underline">
+            {{ item.장소명 }} ({{ item.행정구 }})
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-gray-500">검색 결과가 없습니다.</p>
+  {% endif %}
+</div>
+{% endblock %}
