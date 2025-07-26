@@ -148,7 +148,7 @@ def logout_view(request):
     messages.success(request, "Successfully logged out!")  
     return redirect('home') 
 
-def search_view(request):
+def search(request):
     if request.method == 'POST':
         query = request.POST.get('query', '').strip()
 
@@ -161,6 +161,6 @@ def search_view(request):
             '관광결과': 관광결과,
         }
 
-        return render(request, 'search_result.html', context)
+        return render(request, 'layout/search.html', context)
     
     return redirect('home')
