@@ -161,10 +161,11 @@ def search(request):
             return render(request, 'layout/search_result.html', {'query': query})
 
     야경결과 = 야경명소.objects.filter(장소명__icontains=query)
-    관광결과 = 관광거리.objects.filter(장소명__icontains=query)
+    
+    관광결과 = 관광거리.objects.filter(최종표기명__icontains=query)
 
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        html = render_to_string('layout/search_results.html', {
+        return render(request, 'layout/search_result.html', {
             '야경결과': 야경결과,
             '관광결과': 관광결과,
             'query': query,

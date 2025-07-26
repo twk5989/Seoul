@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
           'X-Requested-With': 'XMLHttpRequest'
         }
       })
-        .then(response => response.json())  //text() → json()으로 변경
+        .then(response => response.text())  //text() → json()으로 변경
         .then(data => {
-          resultsContainer.innerHTML = data.html;
+          resultsContainer.innerHTML = data;
         })
         .catch(error => {
           console.error('자동완성 실패:', error);
@@ -62,9 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
           'X-Requested-With': 'XMLHttpRequest'
         }
       })
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => {
-          resultsContainer.innerHTML = data.html;
+          resultsContainer.innerHTML = data;
         })
         .catch(error => {
           console.error('검색 실패:', error);

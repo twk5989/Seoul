@@ -18,7 +18,7 @@
     {% for item in 관광결과 %}
       <li>
         <a href="{% url 'place_detail' item.pk %}" class="text-green-500 hover:underline">
-          {{ item.장소명 }} ({{ item.행정구 }})
+          {{ item.최종표기명 }} ({{ item.행정구 }})
         </a>
       </li>
     {% endfor %}
