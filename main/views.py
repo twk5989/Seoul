@@ -149,12 +149,20 @@ def logout_view(request):
     messages.success(request, "Successfully logged out!")  
     return redirect('home') 
 
+
+#검색창 부분
 def search(request):
     query = request.GET.get('q', '').strip()
-    야경결과 = 야경명소.objects.filter(장소명__icontains=query) if query else []
-    관광결과 = 관광거리.objects.filter(장소명__icontains=query) if query else []
 
-    # AJAX 요청이면 partial 템플릿만 반환
+    if len(query) < 2:
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'html': '<p class="text-gray-500">2글자 이상 입력해주세요.</p>'})
+        else:
+            return render(request, 'layout/search_result.html', {'query': query})
+
+    야경결과 = 야경명소.objects.filter(장소명__icontains=query)
+    관광결과 = 관광거리.objects.filter(장소명__icontains=query)
+
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         html = render_to_string('layout/search_results.html', {
             '야경결과': 야경결과,
@@ -163,7 +171,6 @@ def search(request):
         })
         return JsonResponse({'html': html})
     
-    # 일반 요청이면 전체 페이지 렌더링
     return render(request, 'layout/search_result.html', {
         '야경결과': 야경결과,
         '관광결과': 관광결과,
