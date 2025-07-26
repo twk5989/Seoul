@@ -101,7 +101,7 @@
 
 /* 내가 지금 들어와 있는 주소에서는 폰트의 색을 하얀색으로 설정 */
 .nav-link.active {
-  color: rgb(143, 133, 133) !important;
+  color: rgb(8, 249, 20) !important;
   font-weight: bold;
 }
 /* 야경명소 하얀색으로 만드는거 */

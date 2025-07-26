@@ -41,30 +41,30 @@ def sign_up_view(request):
     return render(request, 'sign_up.html')
 
 def home(request):
-    return render(request, 'home.html')  # home.html 템플릿을 렌더링
+    return render(request, 'main/home.html')  # home.html 템플릿을 렌더링
 
 # Create your views here.
 def menu_view(request):
-    return render(request, 'menu.html')
+    return render(request, 'layout/menu.html')
 
 def place_view(request):
-    return render(request, 'place.html')
+    return render(request, 'place/place.html')
 
 def night_place_view(request):
-    return render(request, 'night_place.html')
+    return render(request, 'place/night_place.html')
 
 def flower_place_view(request):
-    return render(request, 'flower_place.html')
+    return render(request, 'place/flower_place.html')
 
 def success_view(request):
     return render(request, 'success.html')
 
 def trip_course_view(request):
-    return render(request, 'trip_course.html')
+    return render(request, 'place/trip_course.html')
 
 def place_detail(request, pk) :
     place = 관광거리.objects.get(pk=pk)
-    return render(request, 'place_detail.html', {
+    return render(request, 'detail/place_detail.html', {
         'place' : place,
         '경도' : place.중심좌표X,
         '위도' : place.중심좌표Y,
@@ -82,7 +82,7 @@ def night_detail(request, pk) :
         except 야경명소.DoesNotExist :
             continue
 
-    return render(request, 'night_detail.html', {
+    return render(request, 'detail/night_detail.html', {
         'night': night,
         'similar_night': similar_night,
         '추천장소들' : 추천장소들,
@@ -102,7 +102,7 @@ def flower_course_detail_view(request, place_name):
     if context is None:
         context = {'title': '존재하지 않는 장소입니다.'}
 
-    return render(request, 'flower_course_detail.html', context)
+    return render(request, 'detail/flower_course_detail.html', context)
 
 
 def login_view(request):
@@ -136,7 +136,7 @@ def login_view(request):
                     for error in errors:
                         messages.error(request, f"{field}: {error}")
     
-    return render(request, 'login.html', {
+    return render(request, 'layout/login.html', {
         'signup_form': signup_form,
         'login_form': login_form,
     })
