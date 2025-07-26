@@ -14,6 +14,7 @@ from django.http import JsonResponse
 from .data import flower_course_data
 from .forms import CustomUserCreationForm
 from .models import 유사한야경명소
+from django.template.loader import render_to_string
 from django.db.models import Q
  #여기서 Q는 검색할때에 and 와 or의 조건이다
 
@@ -149,18 +150,22 @@ def logout_view(request):
     return redirect('home') 
 
 def search(request):
-    if request.method == 'POST':
-        query = request.POST.get('query', '').strip()
+    query = request.GET.get('q', '').strip()
+    야경결과 = 야경명소.objects.filter(장소명__icontains=query) if query else []
+    관광결과 = 관광거리.objects.filter(장소명__icontains=query) if query else []
 
-        야경결과 = 야경명소.objects.filter(Q(장소명__icontains=query) | Q(자치구__icontains=query))
-        관광결과 = 관광거리.objects.filter(Q(장소명__icontains=query) | Q(행정구__icontains=query))
-
-        context = {
-            'query': query,
+    # AJAX 요청이면 partial 템플릿만 반환
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        html = render_to_string('layout/search_results.html', {
             '야경결과': 야경결과,
             '관광결과': 관광결과,
-        }
-
-        return render(request, 'layout/search.html', context)
+            'query': query,
+        })
+        return JsonResponse({'html': html})
     
-    return redirect('home')
+    # 일반 요청이면 전체 페이지 렌더링
+    return render(request, 'layout/search_result.html', {
+        '야경결과': 야경결과,
+        '관광결과': 관광결과,
+        'query': query,
+    })

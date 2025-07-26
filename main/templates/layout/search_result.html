@@ -1,0 +1,31 @@
+{# templates/partials/search_results.html #}
+
+{% if 야경결과 %}
+  <h3 class="text-lg font-semibold text-blue-600 mt-4">야경 명소</h3>
+  <ul class="list-disc pl-6">
+    {% for item in 야경결과 %}
+      <li>
+        <a href="{% url 'night_detail' item.pk %}" class="text-blue-500 hover:underline">
+          {{ item.장소명 }} ({{ item.자치구 }})
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if 관광결과 %}
+  <h3 class="text-lg font-semibold text-green-600 mt-4">관광 명소</h3>
+  <ul class="list-disc pl-6">
+    {% for item in 관광결과 %}
+      <li>
+        <a href="{% url 'place_detail' item.pk %}" class="text-green-500 hover:underline">
+          {{ item.장소명 }} ({{ item.행정구 }})
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if not 야경결과 and not 관광결과 %}
+  <p class="text-gray-500 mt-4">검색 결과가 없습니다.</p>
+{% endif %}
