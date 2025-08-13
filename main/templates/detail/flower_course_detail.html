@@ -1,56 +1,83 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{% static 'css/main/flower_detail.css' %}">
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <title>{{ title }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* 커스텀 스크롤바 예시 */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #34d399; /* green-400 */
+      border-radius: 4px;
+    }
+  </style>
 </head>
-<body>
-    {% include 'layout/menu.html' %}
-    <header>
-        <h1>{{ title }}</h1>
-        <h2 class="center">{{ title }} 명소</h2>
-    </header>
+<body class="bg-gradient-to-b from-green-50 via-green-100 to-green-200 min-h-screen flex flex-col">
 
-    <main>
-        
-        
-        <div class="divider"></div>
+  {% include 'layout/menu.html' %}
 
-        <div class="image-gallery">
-            {% for img in images %}
-                <img src="{% static img %}" alt="이미지" />
-            {% endfor %}
-        </div>
+  <header class="text-center py-10 bg-white shadow-md">
+    <h1 class="text-4xl font-extrabold text-green-700">{{ title }}</h1>
+    <h2 class="text-xl text-green-600 mt-2">{{ title }} 명소</h2>
+  </header>
 
-        <section class="detail-info">
-            <div class="divider1"></div>
-            <h3 class="detail-info-title">상세정보</h3>
-            <p>{{ description|linebreaksbr }}</p>
+  <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-            <ul class="info-list">
-                {% for key, value in info.items %}
-                    <li>
-                        <strong>{{ key }}:</strong> 
-                        {% if key == "홈페이지" %}
-                            <a href="{{ value }}" target="_blank" rel="noopener noreferrer">{{ value }}</a>
-                        {% else %}
-                            {{ value }}
-                        {% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
+    <hr class="border-green-300 mb-8" />
 
-            <iframe src="{{ map_url }}" width="600" height="450" style="border:0; display:block; margin:0 auto;" allowfullscreen="" loading="lazy"></iframe>
+    <!-- 이미지 갤러리: 반응형 1~3열 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-10">
+      {% for img in images %}
+      <img 
+        src="{% static img %}" 
+        alt="이미지" 
+        class="rounded-lg shadow-lg object-cover w-full h-64 hover:scale-105 transition-transform duration-300 ease-in-out"
+        loading="lazy"
+      />
+      {% endfor %}
+    </div>
 
-           
-        </section>
-    </main>
+    <section class="bg-white p-6 rounded-lg shadow-lg">
+      <h3 class="text-2xl font-semibold text-green-800 mb-4 border-b-2 border-green-300 pb-2">상세정보</h3>
+      
+      <p class="text-gray-700 whitespace-pre-line mb-6 leading-relaxed">{{ description }}</p>
 
-    <footer>
-        <p>© 2025 서울 여행 가이드. All Rights Reserved.</p>
-    </footer>
+      <ul class="space-y-3 text-gray-800">
+        {% for key, value in info.items %}
+        <li>
+          <strong class="text-green-700">{{ key }}:</strong>
+          {% if key == "홈페이지" %}
+            <a href="{{ value }}" target="_blank" rel="noopener noreferrer" class="text-green-600 underline hover:text-green-800 transition-colors">{{ value }}</a>
+          {% else %}
+            {{ value }}
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+
+      <div class="mt-8">
+        <iframe 
+          src="{{ map_url }}" 
+          width="100%" 
+          height="450" 
+          class="rounded-lg shadow-md"
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-green-100 text-green-700 text-center py-4 text-sm">
+    <p>© 2025 서울 여행 가이드. All Rights Reserved.</p>
+  </footer>
+
 </body>
 </html>

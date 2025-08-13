@@ -21,7 +21,7 @@ function createCard(place, index) {
 
   if (isCenter) {
     card.addEventListener('click', () => {
-      window.location.href = `/night_place/${place.id}`;
+      window.location.href = `/night/${place.id}`;
     });
   }
 
