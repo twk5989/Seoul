@@ -4,80 +4,156 @@
 <head>
   <meta charset="UTF-8" />
   <title>{{ title }}</title>
+  <link rel="stylesheet" href="{% static 'css/detail/flower_detail.css' %}" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* 커스텀 스크롤바 예시 */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background-color: #34d399; /* green-400 */
-      border-radius: 4px;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-b from-green-50 via-green-100 to-green-200 min-h-screen flex flex-col">
 
+<body class="bg-gradient-to-b from-green-50 via-emerald-50 to-teal-50 min-h-screen flex flex-col">
   {% include 'layout/menu.html' %}
 
-  <header class="text-center py-10 bg-white shadow-md">
-    <h1 class="text-4xl font-extrabold text-green-700">{{ title }}</h1>
-    <h2 class="text-xl text-green-600 mt-2">{{ title }} 명소</h2>
+  <!-- Enhanced Hero Section -->
+  <header class="hero-bg text-center py-20 shadow-2xl relative">
+    <div class="floating-elements">
+      <div class="floating-leaf" style="left: 10%; animation-delay: 0s;">🌿</div>
+      <div class="floating-leaf" style="left: 25%; animation-delay: 3s;">🍃</div>
+      <div class="floating-leaf" style="left: 50%; animation-delay: 6s;">🌸</div>
+      <div class="floating-leaf" style="left: 75%; animation-delay: 9s;">🦋</div>
+      <div class="floating-leaf" style="left: 90%; animation-delay: 12s;">✨</div>
+    </div>
+    
+    <div class="relative z-10">
+      <h1 class="text-5xl md:text-7xl font-black text-white mb-4 text-shadow-glow fade-in float">
+        {{ title }}
+      </h1>
+      <div class="glass-card inline-block px-8 py-4 rounded-full slide-up" style="animation-delay: 0.3s;">
+        <h2 class="text-2xl text-white font-bold">{{ title }} 명소 🌟</h2>
+      </div>
+    </div>
   </header>
 
-  <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
-    <hr class="border-green-300 mb-8" />
-
-    <!-- 이미지 갤러리: 반응형 1~3열 -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-10">
-      {% for img in images %}
-      <img 
-        src="{% static img %}" 
-        alt="이미지" 
-        class="rounded-lg shadow-lg object-cover w-full h-64 hover:scale-105 transition-transform duration-300 ease-in-out"
-        loading="lazy"
-      />
-      {% endfor %}
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-16 relative z-20">
+    
+    <!-- Decorative divider -->
+    <div class="flex justify-center mb-12 slide-up" style="animation-delay: 0.5s;">
+      <div class="w-32 h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 rounded-full"></div>
     </div>
 
-    <section class="bg-white p-6 rounded-lg shadow-lg">
-      <h3 class="text-2xl font-semibold text-green-800 mb-4 border-b-2 border-green-300 pb-2">상세정보</h3>
-      
-      <p class="text-gray-700 whitespace-pre-line mb-6 leading-relaxed">{{ description }}</p>
-
-      <ul class="space-y-3 text-gray-800">
-        {% for key, value in info.items %}
-        <li>
-          <strong class="text-green-700">{{ key }}:</strong>
-          {% if key == "홈페이지" %}
-            <a href="{{ value }}" target="_blank" rel="noopener noreferrer" class="text-green-600 underline hover:text-green-800 transition-colors">{{ value }}</a>
-          {% else %}
-            {{ value }}
-          {% endif %}
-        </li>
+    <!-- Enhanced Image Gallery -->
+    <section class="mb-16 slide-up" style="animation-delay: 0.7s;">
+      <h3 class="text-3xl font-bold text-center text-gradient mb-8">📸 갤러리</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for img in images %}
+        <div class="gallery-item rounded-2xl shadow-lg overflow-hidden bg-white p-2">
+          <img 
+            src="{% static img %}"
+            alt="이미지"
+            class="rounded-xl object-cover w-full h-72 transition-transform duration-500 ease-out cursor-pointer"
+            loading="lazy"
+            onclick="openModal(this)"
+          />
+        </div>
         {% endfor %}
-      </ul>
-
-      <div class="mt-8">
-        <iframe 
-          src="{{ map_url }}" 
-          width="100%" 
-          height="450" 
-          class="rounded-lg shadow-md"
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
       </div>
     </section>
 
+    <!-- Enhanced Detail Section -->
+    <section class="info-card p-8 rounded-3xl shadow-2xl slide-up" style="animation-delay: 0.9s;">
+      <div class="flex items-center mb-6">
+        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mr-4">
+          <span class="text-white text-xl font-bold">ℹ️</span>
+        </div>
+        <h3 class="text-3xl font-bold text-gradient">상세정보</h3>
+      </div>
+      
+      <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl mb-8">
+        <p class="text-gray-800 whitespace-pre-line leading-relaxed text-lg">{{ description }}</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+        <div class="space-y-4">
+          {% for key, value in info.items %}
+          <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50">
+            <div class="flex items-start">
+              <span class="inline-block w-3 h-3 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+              <div class="flex-1">
+                <strong class="text-green-700 font-semibold block mb-1">{{ key }}</strong>
+                {% if key == "홈페이지" %}
+                  <a href="{{ value }}" target="_blank" rel="noopener noreferrer" 
+                     class="text-green-600 hover:text-green-800 transition-colors duration-300 underline break-all">
+                    {{ value }}
+                  </a>
+                {% else %}
+                  <span class="text-gray-700">{{ value }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        
+        <div class="flex items-center justify-center">
+          <div class="w-64 h-64 bg-gradient-to-br from-green-100 to-emerald-200 rounded-full flex items-center justify-center shadow-2xl">
+            <div class="text-6xl">🏞️</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enhanced Map Section -->
+      <div class="bg-gradient-to-br from-white to-green-50 p-6 rounded-2xl shadow-inner">
+        <h4 class="text-2xl font-bold text-green-800 mb-4 text-center">📍 위치 정보</h4>
+        <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+          <iframe
+          width="600"
+          height="450"
+          style="border:0"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed/v1/place?key=발급받은_API_KEY&q={{ 위도 }},{{ 경도 }}">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="text-center py-16 slide-up" style="animation-delay: 1.1s;">
+      <div class="glass-card p-8 rounded-3xl max-w-2xl mx-auto">
+        <h3 class="text-3xl font-bold text-green-800 mb-4">🌟 방문해보세요!</h3>
+        <p class="text-lg text-green-700 mb-6">아름다운 {{ title }}에서 특별한 추억을 만들어보세요.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <span class="px-6 py-2 bg-green-500 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow duration-300">#{{ title }}</span>
+          <span class="px-6 py-2 bg-emerald-500 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow duration-300">#서울여행</span>
+          <span class="px-6 py-2 bg-teal-500 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow duration-300">#관광명소</span>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="bg-green-100 text-green-700 text-center py-4 text-sm">
-    <p>© 2025 서울 여행 가이드. All Rights Reserved.</p>
+  <!-- Enhanced Footer -->
+  <footer class="bg-gradient-to-r from-green-800 via-emerald-900 to-teal-900 text-white py-12 mt-20 relative overflow-hidden">
+    <div class="floating-elements opacity-20">
+      <div class="floating-leaf" style="left: 15%; animation-delay: 0s; color: rgba(255,255,255,0.3);">🌿</div>
+      <div class="floating-leaf" style="left: 85%; animation-delay: 5s; color: rgba(255,255,255,0.3);">🍃</div>
+    </div>
+    
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+      <h4 class="text-3xl font-bold mb-4 text-shadow-glow">서울 여행 가이드</h4>
+      <p class="text-lg mb-6 opacity-90">아름다운 서울의 {{ title }}를 함께 만나보세요</p>
+      <div class="flex justify-center space-x-8 mb-6 text-4xl">
+        <span class="hover:scale-125 transition-transform duration-300 cursor-pointer">🏛️</span>
+        <span class="hover:scale-125 transition-transform duration-300 cursor-pointer">🌸</span>
+        <span class="hover:scale-125 transition-transform duration-300 cursor-pointer">🌳</span>
+        <span class="hover:scale-125 transition-transform duration-300 cursor-pointer">✨</span>
+      </div>
+      <p class="opacity-70 text-sm">© 2025 서울 여행 가이드. All Rights Reserved.</p>
+    </div>
   </footer>
-
+  <script src="{% static 'js/detail/flower_detail.js' %}"></script>
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="absolute top-4 right-8 text-white text-4xl font-bold cursor-pointer hover:text-gray-300 transition-colors z-10">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
 </body>
 </html>

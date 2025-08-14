@@ -1,278 +1,438 @@
-/* tourist.css */
+
 body {
-  margin: 0;
-  background: linear-gradient(to bottom, #fff0f5, #ffd6e0, #ffe4ec);
-  color: #333;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
-header h1 {
-    text-align: center;  /* 가운데 정렬 */
-    font-weight: bold;   /* 글씨체 굵게 */
-    font-size: 2.5em;    /* 글씨 크기 조정 (선택적) */
-    margin-top: 150px;
+/* 커스텀 스크롤바 */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #f0fdf4, #dcfce7);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #22c55e, #16a34a);
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #16a34a, #15803d);
+  background-clip: content-box;
 }
 
-header .center {
-    text-align: center; /* 가운데 정렬 */
-    font-family: 'Arial', sans-serif; /* 글씨체 설정 */
-    font-size: 28px; /* 글씨 크기 조정 */
-    font-weight: 500; /* 글씨 굵게 */
-    margin-top: 5%; /* 위쪽 여백 */
-    color: black; /* 글씨 색상 */
+/* 애니메이션 */
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+  opacity: 0;
 }
 
-.image-gallery {
-    display: flex;
-    justify-content: center; /* 가로로 중앙 정렬 */
-    gap: 15px; /* 이미지 간격 */
-    margin-top: 20px;
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
-.image-gallery img {
-  width: 250px;          /* 원하는 고정 너비 */
-  height: 180px;         /* 원하는 고정 높이 */
-  object-fit: cover;     /* 이미지가 꽉 차게 자르기 */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+.slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(40px);
 }
 
-.divider {
-    border-top: 2px solid #333; /* 실선 두께 2px, 색상 #333 */
-    margin: 20px auto; /* 상하 여백 추가 */
-    width: 80%;
-    display: block;
-}
-
-.detail-info-title {
-    font-size: 24px;  /* 글씨 크기 */
-    font-weight: bold;  /* 굵은 글씨 */
-    text-align: left;  /* 왼쪽 정렬 */
-    margin-top: 2%;  /* 위쪽 여백을 줄여서 위로 가까이 이동 */
-    margin-bottom: 5px;  /* 아래쪽 여백을 줄여서 아래와의 간격을 줄임 */
-    margin-left: 10%;  /* 왼쪽 여백 추가로 오른쪽으로 이동 */
-}
-
-.detail-info p {
-    text-align:left; /* 텍스트 가운데 정렬 */
-    font-size: 16px;  /* 글씨 크기 (필요시 조정) */
-    line-height: 1.2;  /* 줄 간격 (필요시 조정) */
-    padding-left: 10%;
-    margin-top: 2%;
-    width: 80%;  /* 부모 요소 너비에 비례하여 80% 크기로 설정 (조정 가능) */
-}
-
-.divider1 {
-    border-top: 2px solid #333; /* 실선 두께 2px, 색상 #333 */
-    margin: 3% auto; /* 상하 여백을 줄여서 실선과 제목 간의 간격을 좁힘 */
-    width: 80%;
-    display: block;
-}
-
-.info-list {
-  list-style-type: disc;
-  list-style-position: inside;
-  padding-left: 10%;
-  margin-top: 2%;
-  max-width: 100%;
-}
-
-.info-list li {
-  margin-bottom: 10px;
-  line-height: 1.6;
-  word-wrap: break-word;    /* 너무 긴 단어도 줄바꿈 */
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.info-list strong {
-  min-width: 50px;
-  font-weight: 600;
-  flex-shrink: 0;           /* 크기 줄어들지 않게 */
-}
-
-.info-list a {
-  color: #007BFF;
-  text-decoration: none;
-  word-break: break-all;
-}
-
-.info-list a:hover {
-  text-decoration: underline;
-}
-
-
-
-
-
-/* 화면 크기가 1200px 이상일 때 */
-@media (min-width: 1200px) {
-  .place_container {
-      gap: 40px;
-  }
-
-  header h1 {
-      font-size: 2.5em;
-      margin-top: 150px;
-  }
-
-  .image-gallery img {
-      width: 250px;
-      height: 180px;
-  }
-
-  .center {
-      font-size: 28px;
-      margin-top: 40px;
-  }
-
-  .divider {
-      margin: 20px auto;
-      width: 80%;
-  }
-
-  .image-gallery-title {
-      font-size: 24px;
-  }
-
-  .section-header {
-      gap: 20px;
-  }
-
-  p {
-      font-size: 16px;
-      margin: 0 auto;
-      width: 80%;
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* 화면 크기가 768px 이상일 때 */
-@media (max-width: 1199px) and (min-width: 768px) {
-  .place_container {
-      gap: 30px;
-  }
+.float {
+  animation: float 6s ease-in-out infinite;
+}
 
-  header h1 {
-      font-size: 2em;
-      margin-top: 120px;
-  }
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(2deg); }
+  66% { transform: translateY(-5px) rotate(-2deg); }
+}
 
-  .image-gallery img {
-      width: 200px;
-      height: 150px;
-  }
+/* 배경 그라데이션 및 패턴 */
+.hero-bg {
+  background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
+  position: relative;
+  overflow: hidden;
+}
 
-  .center {
-      font-size: 24px;
-      margin-top: 30px;
-  }
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(5, 150, 105, 0.2) 0%, transparent 50%);
+  animation: gradientShift 8s ease-in-out infinite;
+}
 
-  .divider {
-      margin: 15px auto;
-      width: 75%;
-  }
+@keyframes gradientShift {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
 
-  .image-gallery-title {
-      font-size: 22px;
-  }
+.floating-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
-  .section-header {
-      gap: 15px;
-  }
+.floating-leaf {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 24px;
+  animation: floatLeaf 15s infinite linear;
+}
 
-  p {
-      font-size: 14px;
+@keyframes floatLeaf {
+  0% {
+    transform: translateY(100vh) translateX(-10px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px) rotate(180deg);
+    opacity: 0;
   }
 }
 
-/* 화면 크기가 480px 이상일 때 */
-@media (max-width: 767px) and (min-width: 480px) {
-  .place_container {
-      gap: 20px;
-  }
+/* 카드 효과 */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+}
 
-  header h1 {
-      font-size: 1.8em;
-      margin-top: 100px;
-  }
+.info-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
 
-  .image-gallery img {
-      width: 180px;
-      height: 120px;
-  }
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(34, 197, 94, 0.1), transparent);
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.6s;
+}
 
-  .center {
-      font-size: 20px;
-      margin-top: 20px;
-  }
+.info-card:hover::before {
+  transform: rotate(45deg) translateX(100%);
+}
 
-  .divider {
-      margin: 10px auto;
-      width: 70%;
-  }
+.info-card:hover {
+  background: linear-gradient(145deg, rgba(255,255,255,1), rgba(255,255,255,0.95));
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(34, 197, 94, 0.2);
+}
 
-  .image-gallery-title {
-      font-size: 18px;
-  }
+/* 이미지 갤러리 효과 */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
 
-  .section-header {
-      gap: 10px;
-  }
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(16, 185, 129, 0.3));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
-  p {
-      font-size: 12px;
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.15);
+}
+
+/* 리플 효과 */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.4);
+  transform: scale(0);
+  animation: rippleEffect 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(4);
+    opacity: 0;
   }
 }
 
-/* 화면 크기가 480px 미만일 때 */
-@media (max-width: 479px) {
-  .place_container {
-      gap: 10px;
-  }
+/* 텍스트 효과 */
+.text-gradient {
+  background: linear-gradient(135deg, #059669, #10b981, #34d399);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientMove 3s ease infinite;
+}
 
-  header h1 {
-      font-size: 1.6em;
-      margin-top: 80px;
-  }
+@keyframes gradientMove {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
 
-  .image-gallery img {
-      width: 150px;
-      height: 100px;
-  }
+.text-shadow-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+}
 
-  .center {
-      font-size: 18px;
-      margin-top: 15px;
-  }
+/* 모달 효과 (이미지 확대용) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  animation: modalFadeIn 0.3s ease;
+}
 
-  .divider {
-      margin: 5px auto;
-      width: 60%;
-  }
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-  .image-gallery-title {
-      font-size: 16px;
-  }
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  animation: modalSlideIn 0.3s ease;
+}
 
-  .section-header {
-      gap: 8px;
+@keyframes modalSlideIn {
+  from { 
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0;
   }
-
-  p {
-      font-size: 10px;
+  to { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
   }
 }
 
+/* 호버 효과 */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(34, 197, 94, 0.15);
+}
 
+/* 버튼 효과 */
+.btn-gradient {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
 
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
 
+.btn-gradient:hover::before {
+  left: 100%;
+}
 
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+}
 
+/* 펄스 애니메이션 */
+.pulse-green {
+  animation: pulseGreen 2s infinite;
+}
 
+@keyframes pulseGreen {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
 
+/* 로딩 스피너 */
+.loading-spinner {
+  border: 3px solid rgba(34, 197, 94, 0.3);
+  border-radius: 50%;
+  border-top: 3px solid #22c55e;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
+/* 툴팁 */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
 
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+}
 
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
 
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .floating-leaf {
+    font-size: 18px;
+  }
   
+  .hero-bg {
+    padding: 40px 16px;
+  }
+  
+  .text-gradient {
+    font-size: 2rem;
+  }
+  
+  .glass-card {
+    backdrop-filter: blur(10px);
+  }
+  
+  .modal-content {
+    max-width: 95%;
+    max-height: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-leaf {
+    font-size: 14px;
+  }
+  
+  .info-card {
+    padding: 1rem;
+  }
+  
+  .gallery-item img {
+    height: 200px;
+  }
+}
+
+/* 접근성 */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .slide-up,
+  .float,
+  .floating-leaf,
+  .gradientShift,
+  .gradientMove,
+  .ripple {
+    animation: none;
+  }
+  
+  .slide-up {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-in {
+    opacity: 1;
+  }
+}
+
+/* 다크모드 지원 */
+@media (prefers-color-scheme: dark) {
+  .info-card {
+    background: linear-gradient(145deg, rgba(31, 41, 55, 0.9), rgba(31, 41, 55, 0.7));
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+  
+  .glass-card {
+    background: rgba(31, 41, 55, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
